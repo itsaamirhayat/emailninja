@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — The Operational Protocol | Amir Hayat</title>
+<style>
+
+  :root {
+    --black: #0B0B0F;
+    --panel: #15151D;
+    --panel-line: rgba(255,255,255,0.08);
+    --paper: #FFFFFF;
+    --paper-alt: #F6F6F8;
+    --ink: #15151B;
+    --gray-on-light: #5B5B66;
+    --gray-on-dark: #9A9AA6;
+    --crimson: #E11D48;
+    --crimson-dark: #B31139;
+    --crimson-glow: rgba(225,29,72,0.45);
+    --line-light: #E7E7EC;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: auto !important;
+    overflow-y: auto !important;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--black);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  main, section {
+    height: auto !important;
+    overflow-y: auto !important;
+  }
+
+  a {
+    color: var(--crimson);
+    text-decoration: none;
+  }
+
+  a:hover, a:focus-visible {
+    text-decoration: underline;
+  }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ---------- NAVIGATION ---------- */
+
+  header.site-nav {
+    border-bottom: 1px solid var(--panel-line);
+    background-color: var(--black);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .nav-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .nav-logo {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: #FFFFFF;
+  }
+
+  nav.nav-links {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+
+  nav.nav-links a {
+    color: var(--gray-on-dark);
+    font-size: 14.5px;
+    font-weight: 500;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+  }
+
+  nav.nav-links a:hover,
+  nav.nav-links a:focus-visible {
+    text-decoration: none;
+    color: #FFFFFF;
+  }
+
+  nav.nav-links a.active {
+    color: #FFFFFF;
+    border-bottom: 2px solid var(--crimson);
+    font-weight: 700;
+  }
+
+  /* ---------- HERO (DARK) ---------- */
+
+  section.hero {
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -10%, rgba(225,29,72,0.16), transparent 60%),
+      var(--black);
+    padding: 92px 0 68px;
+  }
+
+  .hero-inner {
+    max-width: 880px;
+  }
+
+  h1.hero-headline {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    color: #FFFFFF;
+    font-size: 46px;
+    line-height: 1.18;
+    margin: 0 0 28px;
+    letter-spacing: -0.01em;
+  }
+
+  p.hero-sub {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    color: var(--gray-on-dark);
+    font-size: 19px;
+    line-height: 1.6;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  /* ---------- INTRO COPY (LIGHT) ---------- */
+
+  section.intro {
+    background: var(--paper);
+    padding: 72px 0;
+    border-bottom: 1px solid var(--line-light);
+  }
+
+  .intro-inner {
+    max-width: 700px;
+  }
+
+  .intro-inner p {
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.75;
+    margin: 0 0 26px;
+  }
+
+  .intro-inner p:last-child {
+    margin-bottom: 0;
+  }
+
+  .intro-inner p.lede {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--black);
+  }
+
+  .intro-inner p.emphasis {
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  /* ---------- PROTOCOL MATRIX (LIGHT ALT) ---------- */
+
+  section.protocol-matrix {
+    background: var(--paper-alt);
+    padding: 88px 0;
+  }
+
+  .matrix-heading {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: var(--crimson);
+    margin: 0 0 56px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line-light);
+    font-weight: 700;
+  }
+
+  .protocol-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 48px;
+    background-color: var(--black);
+    border-radius: 16px;
+    padding: 52px;
+    margin-bottom: 24px;
+  }
+
+  .protocol-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .protocol-card.index-left {
+    flex-direction: row;
+  }
+
+  .protocol-card.index-right {
+    flex-direction: row-reverse;
+  }
+
+  .protocol-index {
+    flex: 0 0 auto;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 68px;
+    font-weight: 700;
+    color: var(--crimson);
+    line-height: 1;
+    min-width: 108px;
+  }
+
+  .protocol-card.index-left .protocol-index {
+    text-align: left;
+  }
+
+  .protocol-card.index-right .protocol-index {
+    text-align: right;
+  }
+
+  .protocol-body {
+    flex: 1 1 auto;
+  }
+
+  .protocol-card.index-right .protocol-body {
+    text-align: right;
+  }
+
+  h3.protocol-title {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #FFFFFF;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0 0 18px;
+    line-height: 1.3;
+  }
+
+  .protocol-card p.protocol-desc {
+    color: var(--gray-on-dark);
+    font-size: 16px;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* ---------- CLOSING COMMAND PANEL (DARK) ---------- */
+
+  section.closing-panel {
+    background-color: var(--black);
+    padding: 96px 0;
+    border-top: 1px solid var(--panel-line);
+  }
+
+  .closing-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 40px;
+    text-align: center;
+  }
+
+  p.closing-argument {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #FFFFFF;
+    font-size: 30px;
+    line-height: 1.45;
+    margin: 0 0 44px;
+  }
+
+  a.cta-button {
+    display: inline-block;
+    background-color: var(--crimson);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 20px 42px;
+    border-radius: 8px;
+    letter-spacing: 0.01em;
+    box-shadow: 0 0 0 1px rgba(225,29,72,0.4), 0 10px 32px var(--crimson-glow);
+  }
+
+  a.cta-button:hover,
+  a.cta-button:focus-visible {
+    text-decoration: none;
+    background-color: var(--crimson-dark);
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  footer.site-footer {
+    padding: 34px 0 30px;
+    background-color: var(--black);
+    border-top: 1px solid var(--panel-line);
+  }
+
+  .footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 40px;
+    text-align: center;
+  }
+
+  .contact-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .contact-row a {
+    color: var(--gray-on-dark);
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+
+  .contact-row a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+  }
+
+  .contact-row .dot {
+    color: rgba(255,255,255,0.2);
+    font-size: 13px;
+  }
+
+  footer.site-footer p {
+    color: rgba(255,255,255,0.4);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+
+  @media (max-width: 840px) {
+    h1.hero-headline {
+      font-size: 34px;
+    }
+
+    p.hero-sub {
+      font-size: 17px;
+    }
+
+    .protocol-card,
+    .protocol-card.index-right {
+      flex-direction: column;
+      padding: 36px;
+      gap: 20px;
+    }
+
+    .protocol-card.index-left .protocol-index,
+    .protocol-card.index-right .protocol-index {
+      text-align: left;
+    }
+
+    .protocol-card.index-right .protocol-body {
+      text-align: left;
+    }
+
+    .protocol-index {
+      font-size: 48px;
+      min-width: auto;
+    }
+
+    p.closing-argument {
+      font-size: 24px;
+    }
+
+    .nav-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .wrap,
+    .nav-inner,
+    .closing-inner,
+    .footer-inner {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    section.hero {
+      padding: 64px 0 48px;
+    }
+
+    section.intro {
+      padding: 48px 0;
+    }
+
+    section.protocol-matrix {
+      padding: 56px 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">AMIR HAYAT</div>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="samples.html">Samples</a>
+      <a href="testimonials.html">Proof</a>
+      <a href="wins.html">Framework</a>
+      <a href="services.html" class="active" aria-current="page">Services</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+        <h1 class="hero-headline">The Operational Protocol: How I Build A High-Yield Backend Cash Machine In 14 Days</h1>
+        <p class="hero-sub">I don't sell cute copy or pretty templates. I deploy a systematic, full-stack extraction protocol that forces the tech monopolies to deliver your emails straight to the primary inbox.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="wrap">
+      <div class="intro-inner">
+        <p class="lede">Let's establish some ground rules right now.</p>
+        <p>If you are looking for a cheap, freelance content writer to churn out generic, boring newsletters to "stay top of mind" with your audience... please close this page immediately. There are thousands of low-cost writers on the internet who will happily take a few dollars to write copy that lands directly in your subscribers' spam folders.</p>
+        <p class="emphasis">I am not a freelancer, and I don't write fluff.</p>
+        <p>Beating the 2026 bulk-sender algorithms requires a cold, mechanical, systematic process. You cannot solve a technical deliverability crisis with a creative headline alone. And you cannot turn cold traffic into repeat buyers with a technical server script that lacks human psychology.</p>
+        <p>Below is the exact 6-step protocol I run inside your business over a 14-day sprint. It's a calculated fusion of backend server engineering and direct-response salesmanship in print. It's the only way to stop the bleeding, bypass the filters, and maximize your retention revenue.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="protocol-matrix">
+    <div class="wrap">
+      <p class="matrix-heading">THE SIX-STEP DEPLOYMENT SEQUENCE</p>
+
+      <div class="protocol-card index-left">
+        <div class="protocol-index">01</div>
+        <div class="protocol-body">
+          <h3 class="protocol-title">The Forensic Accounts Audit</h3>
+          <p class="protocol-desc">Before I alter a single line of text or touch a server setting, I run a deep forensic investigation of your current setup. I inspect your historical open rates, analyze your sender reputation metrics across Google Postmaster Tools, and locate the exact digital leaks where your email system is currently dropping cash on the floor.</p>
+        </div>
+      </div>
+
+      <div class="protocol-card index-right">
+        <div class="protocol-index">02</div>
+        <div class="protocol-body">
+          <h3 class="protocol-title">The Deliverability &amp; Domain Realignment</h3>
+          <p class="protocol-desc">I dive into the cold mechanical guts of your server backend. I surgically align your technical domain authentication protocols—flawlessly setting up your SPF, DKIM, and DMARC records. I isolate and fix any technical red flags to drop your spam complaint rate well below the dangerous 0.3% threshold, giving your domain a bulletproof shield.</p>
+        </div>
+      </div>
+
+      <div class="protocol-card index-left">
+        <div class="protocol-index">03</div>
+        <div class="protocol-body">
+          <h3 class="protocol-title">The Psychological Copy Build</h3>
+          <p class="protocol-desc">Once the technical pipes are clear, I write the heavy artillery. I strip away the corporate jargon and write raw, direct-response email assets tailored specifically to your target buyers. Every word is engineered using high-impact psychological hooks, tight pacing, and visual eye-relief to keep the reader moving down the page.</p>
+        </div>
+      </div>
+
+      <div class="protocol-card index-right">
+        <div class="protocol-index">04</div>
+        <div class="protocol-body">
+          <h3 class="protocol-title">Automated Cash-Flow Architecture</h3>
+          <p class="protocol-desc">I build and deploy your 3 core automated retention flows: your Welcome Sequence, Abandoned Cart Flow, and Customer Winback Machine. I don't use heavy, slow HTML templates that trigger spam filters. I build clean, high-converting behavioral sequences that trigger automatically based on exactly what your customer does on your site.</p>
+        </div>
+      </div>
+
+      <div class="protocol-card index-left">
+        <div class="protocol-index">05</div>
+        <div class="protocol-body">
+          <h3 class="protocol-title">Bulletproof Analytics Tracking</h3>
+          <p class="protocol-desc">I don't deal in guesswork or "vague estimates." I set up airtight, trackable data infrastructure inside your dashboard. Every dollar generated by your automated flows and broadcast campaigns is tracked with precision, giving you an unassailable ledger of your exact return on investment.</p>
+        </div>
+      </div>
+
+      <div class="protocol-card index-right">
+        <div class="protocol-index">06</div>
+        <div class="protocol-body">
+          <h3 class="protocol-title">The Scaling &amp; Optimization Runs</h3>
+          <p class="protocol-desc">With the core cash-machine fully operational, I turn on the afterburners. I implement strategic behavioral segmentation to split your list into highly active buyers and cold leads, then run rapid split-tests on hooks and offers, squeezing every ounce of available profit out of your subscriber base while your ad costs drop.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="closing-panel">
+    <div class="closing-inner">
+      <p class="closing-argument">This is the exact protocol that turns dying lists into automated cash registers. If you want this machine deployed inside your business, let's look at your engine today.</p>
+      <a href="contact.html" class="cta-button">Claim My Free Revenue Audit</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="contact-row">
+      <a href="mailto:itsaamirhayat@gmail.com">Email</a>
+      <span class="dot">•</span>
+      <a href="https://www.linkedin.com/in/amir-hayat-0016b2266/" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="dot">•</span>
+      <a href="https://x.com/amir_malic" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+    <p>© 2026 Amir Hayat. All Rights Reserved. | Designed for Pure Performance</p>
+  </div>
+</footer>
+
+</body>
+</html>

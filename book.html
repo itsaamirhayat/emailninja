@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amir Hayat — Emergency Diagnostic Call</title>
+<style>
+  :root{
+    --black:#0B0B0F;
+    --panel:#15151D;
+    --panel-line:rgba(255,255,255,0.08);
+    --paper:#FFFFFF;
+    --paper-alt:#F6F6F8;
+    --ink:#15151B;
+    --gray-on-light:#5B5B66;
+    --gray-on-dark:#9A9AA6;
+    --crimson:#E11D48;
+    --crimson-dark:#B31139;
+    --crimson-glow:rgba(225,29,72,0.45);
+    --line-light:#E7E7EC;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html, body{
+    height:auto !important;
+    overflow-y:auto !important;
+    background:var(--black);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    scroll-behavior:smooth;
+  }
+
+  main{
+    height:auto !important;
+    overflow-y:auto !important;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  section{
+    height:auto !important;
+    overflow-y:auto !important;
+  }
+
+  /* ---------- BRAND HEADER ---------- */
+  .brand-header{
+    padding:36px 0 24px;
+    text-align:center;
+    border-bottom:1px solid var(--panel-line);
+  }
+
+  .brand-header .name{
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:19px;
+    letter-spacing:0.08em;
+    color:#FFFFFF;
+    font-weight:700;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:64px 0 48px;
+    text-align:left;
+  }
+
+  .hero h1{
+    font-family:Georgia, "Times New Roman", serif;
+    font-weight:700;
+    color:#FFFFFF;
+    font-size:clamp(30px, 4.2vw, 48px);
+    line-height:1.22;
+    max-width:820px;
+  }
+
+  .hero p{
+    margin-top:22px;
+    color:var(--gray-on-dark);
+    font-weight:500;
+    font-size:18px;
+    line-height:1.6;
+    max-width:640px;
+  }
+
+  /* ---------- SPLIT GRID ---------- */
+  .split-grid{
+    display:grid;
+    grid-template-columns:60% 40%;
+    gap:48px;
+    padding-bottom:80px;
+    align-items:start;
+  }
+
+  @media (max-width:860px){
+    .split-grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  /* ---------- LEFT COLUMN ---------- */
+  .left-col{
+    padding-right:8px;
+  }
+
+  .alert-bar{
+    background:var(--panel);
+    border:1px solid var(--panel-line);
+    border-left:4px solid var(--crimson);
+    color:#FFFFFF;
+    font-weight:700;
+    padding:16px 20px;
+    border-radius:8px;
+    font-size:15px;
+    margin-bottom:36px;
+  }
+
+  .letter{
+    background:#ffffff;
+    border-radius:16px;
+    box-shadow:0 20px 60px rgba(11,11,15,0.06);
+    padding:44px 40px;
+  }
+
+  .letter p{
+    font-size:17px;
+    line-height:1.75;
+    color:var(--ink);
+    margin-bottom:20px;
+    max-width:640px;
+  }
+
+  .letter p.lede{
+    font-weight:700;
+  }
+
+  .reasons-heading{
+    font-family:Georgia, "Times New Roman", serif;
+    font-weight:700;
+    color:#FFFFFF;
+    font-size:26px;
+    margin:44px 0 24px;
+  }
+
+  .reason{
+    display:flex;
+    gap:16px;
+    margin-bottom:20px;
+    max-width:660px;
+    background:var(--panel);
+    border:1px solid var(--panel-line);
+    border-radius:12px;
+    padding:22px 24px;
+  }
+
+  .reason .marker{
+    flex-shrink:0;
+    font-size:18px;
+    line-height:1.75;
+  }
+
+  .reason p{
+    font-size:16px;
+    line-height:1.7;
+    color:rgba(255,255,255,0.85);
+    margin:0;
+  }
+
+  .reason strong{
+    color:#FFFFFF;
+  }
+
+  /* ---------- RIGHT COLUMN / VAULT ---------- */
+  .vault{
+    background:var(--panel);
+    border:1px solid var(--panel-line);
+    padding:40px;
+    border-radius:16px;
+    position:sticky;
+    top:32px;
+  }
+
+  .vault-inner{
+    border:1.5px dashed rgba(255,255,255,0.25);
+    border-radius:10px;
+    padding:32px 24px;
+  }
+
+  .vault-title{
+    color:#FFFFFF;
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:6px;
+  }
+
+  .vault-subtitle{
+    color:var(--gray-on-dark);
+    font-size:13.5px;
+    margin-bottom:28px;
+    line-height:1.5;
+  }
+
+  .checklist{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    margin-bottom:34px;
+  }
+
+  .checklist li{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    color:rgba(255,255,255,0.9);
+    font-size:14.5px;
+    line-height:1.6;
+  }
+
+  .checklist li .check{
+    color:var(--crimson);
+    font-weight:700;
+    flex-shrink:0;
+  }
+
+  .book-btn{
+    display:block;
+    width:100%;
+    text-align:center;
+    background:var(--crimson);
+    color:#ffffff;
+    border:none;
+    padding:20px 20px;
+    font-size:15.5px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    border-radius:8px;
+    cursor:pointer;
+    font-family:inherit;
+    box-shadow:0 0 0 1px rgba(225,29,72,0.4), 0 10px 32px var(--crimson-glow);
+    transition:transform 0.15s ease, background 0.2s ease;
+  }
+
+  .book-btn:hover{
+    background:var(--crimson-dark);
+    transform:translateY(-2px);
+  }
+
+  .book-btn:focus-visible{
+    outline:3px solid #FFFFFF;
+    outline-offset:2px;
+  }
+
+  .vault-fineprint{
+    margin-top:18px;
+    color:var(--gray-on-dark);
+    font-size:12.5px;
+    line-height:1.6;
+    text-align:center;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .funnel-footer{
+    border-top:1px solid var(--panel-line);
+    padding:32px 0 48px;
+    text-align:center;
+    font-size:13px;
+    color:var(--gray-on-dark);
+  }
+
+  .contact-row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+
+  .contact-row a{
+    color:var(--gray-on-dark);
+    text-decoration:none;
+    font-weight:600;
+    font-size:13px;
+  }
+
+  .contact-row a:hover{
+    color:#FFFFFF;
+  }
+
+  .contact-row .dot{
+    color:rgba(255,255,255,0.2);
+  }
+
+  .funnel-footer a.back-link{
+    color:var(--crimson);
+    text-decoration:none;
+    font-weight:600;
+  }
+
+  .funnel-footer a.back-link:hover{
+    text-decoration:underline;
+  }
+</style>
+</head>
+<body>
+
+<header class="brand-header">
+  <div class="name">AMIR HAYAT</div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <h1>Lock In Your 15-Minute Live System Extraction Call Before Your Current Domain Health Gets Worse</h1>
+    <p>This is not a "casual chat" or a hidden sales pitch. This is a secure, 1-on-1 diagnostic where we open your email backend live and pinpoint the exact algorithmic chokeholds starving your revenue.</p>
+  </section>
+
+  <section class="split-grid">
+
+    <div class="left-col">
+
+      <div class="alert-bar">
+        STATUS: Diagnostic slots are limited every week — booked directly on my calendar below.
+      </div>
+
+      <div class="letter">
+        <p class="lede">Listen to me very carefully.</p>
+
+        <p>Right now, as you read these words, your email list is actively leaking cash. Every hour your technical domain settings remain misaligned, and every time you blast an unoptimized campaign into the "Promotions" tab, your sender reputation drops deeper into a digital grave.</p>
+
+        <p>You can try to read blogs, watch YouTube videos, or hire another low-cost content writer to fix this. But while you waste time guessing, the tech monopolies — Google, Yahoo, Microsoft — are quietly tightening the noose around your brand.</p>
+
+        <p>Because my calendar is tightly managed between active 14-day performance sprints, I only open a handful of diagnostic slots per week.</p>
+
+        <p>If you're a serious founder generating at least 7 figures, this call is the turning point. We'll share a screen, look at your raw numbers, and map out the exact sequence to stop the silent inbox execution.</p>
+      </div>
+
+      <h2 class="reasons-heading">The Three Reasons For This Call (The Pre-Frame)</h2>
+
+      <div class="reason">
+        <span class="marker">👉</span>
+        <p><strong>Reason 1: We Inspect the Guts Live.</strong> Every email system is broken in its own unique way. Some stores have a broken checkout flow; others have shattered SPF/DKIM records. I can't diagnose a level-four cardiac arrest over email. We have to open the hood together.</p>
+      </div>
+
+      <div class="reason">
+        <span class="marker">👉</span>
+        <p><strong>Reason 2: Ruthless Client Filtering.</strong> I don't take on every client who has a thousand dollars. If your list size is too small, if your traffic is fake, or if you refuse to act fast, I can't help you. This call is a two-way filter to make sure we're a fit for a 14-day sprint.</p>
+      </div>
+
+      <div class="reason">
+        <span class="marker">👉</span>
+        <p><strong>Reason 3: Zero Hidden Sales Pitches.</strong> I don't need to beg for your business. By the end of the 15 minutes, you'll see your leaks laid bare on the screen. If you want me to deploy the protocol to fix them, ask. If you want to take the notes and fix it yourself, you leave with my blessing.</p>
+      </div>
+
+    </div>
+
+    <div class="right-col">
+      <div class="vault">
+        <div class="vault-inner">
+          <div class="vault-title">Reserve Your Slot</div>
+          <div class="vault-subtitle">Before you book, make sure this is actually you:</div>
+
+          <ul class="checklist">
+            <li><span class="check">✓</span> You run a 7-to-8-figure e-commerce store, high-ticket info-product, or high-volume newsletter</li>
+            <li><span class="check">✓</span> You can grant 15 minutes of view-only access to Klaviyo or ActiveCampaign on the call</li>
+            <li><span class="check">✓</span> You're the actual decision-maker, not gathering quotes for someone else</li>
+          </ul>
+
+          <a class="book-btn" href="https://zcal.co/i/sSUH0S8q" target="_blank" rel="noopener">Book My Diagnostic Slot Now</a>
+
+          <p class="vault-fineprint">You'll land on my live calendar. Pick any open slot — no back-and-forth required.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="funnel-footer">
+  <div class="contact-row">
+    <a href="mailto:itsaamirhayat@gmail.com">Email</a>
+    <span class="dot">•</span>
+    <a href="https://www.linkedin.com/in/amir-hayat-0016b2266/" target="_blank" rel="noopener">LinkedIn</a>
+    <span class="dot">•</span>
+    <a href="https://x.com/amir_malic" target="_blank" rel="noopener">X / Twitter</a>
+  </div>
+  © 2026 Amir Hayat. All Rights Reserved. | <a href="index.html" class="back-link">Back to Main Site</a>
+</footer>
+
+</body>
+</html>

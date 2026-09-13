@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Amir Hayat | Email Deliverability Architect</title>
+<style>
+
+  :root{
+    --black:#0B0B0F;
+    --panel:#15151D;
+    --panel-line:rgba(255,255,255,0.08);
+    --paper:#FFFFFF;
+    --paper-alt:#F6F6F8;
+    --ink:#15151B;
+    --gray-on-light:#5B5B66;
+    --gray-on-dark:#9A9AA6;
+    --crimson:#E11D48;
+    --crimson-dark:#B31139;
+    --crimson-glow:rgba(225,29,72,0.45);
+    --line-light:#E7E7EC;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html, body{
+    height:auto !important;
+    overflow-y:auto !important;
+    background:var(--black);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    scroll-behavior:smooth;
+  }
+
+  main{
+    height:auto !important;
+    overflow-y:auto !important;
+    display:block;
+  }
+
+  section{
+    height:auto !important;
+    overflow-y:auto !important;
+  }
+
+  img, svg{ max-width:100%; display:block; }
+
+  a{ text-decoration:none; color:inherit; }
+
+  ::selection{ background:var(--crimson); color:#ffffff; }
+
+  /* ---------- NAVIGATION ---------- */
+
+  header.site-nav{
+    width:100%;
+    background:var(--black);
+    border-bottom:1px solid var(--panel-line);
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+
+  .nav-inner{
+    max-width:1180px;
+    margin:0 auto;
+    padding:22px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:18px;
+  }
+
+  .brand{
+    font-family:Georgia, "Times New Roman", serif;
+    font-weight:700;
+    font-size:1.2rem;
+    letter-spacing:0.04em;
+    color:#FFFFFF;
+  }
+
+  nav.primary-links ul{
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+  }
+
+  nav.primary-links a{
+    font-size:0.9rem;
+    color:var(--gray-on-dark);
+    padding-bottom:4px;
+    border-bottom:2px solid transparent;
+    transition:border-color 0.2s ease, color 0.2s ease;
+  }
+
+  nav.primary-links a:hover{
+    color:#FFFFFF;
+  }
+
+  nav.primary-links a.active{
+    color:#FFFFFF;
+    border-bottom:2px solid var(--crimson);
+    font-weight:600;
+  }
+
+  /* ---------- HERO (DARK) ---------- */
+
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -10%, rgba(225,29,72,0.16), transparent 60%),
+      var(--black);
+    padding:80px 0 56px;
+  }
+
+  .hero-inner{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .hero h1{
+    font-family:Georgia, "Times New Roman", serif;
+    font-weight:700;
+    font-size:2.5rem;
+    line-height:1.25;
+    color:#FFFFFF;
+    letter-spacing:-0.01em;
+  }
+
+  .hero p.subhead{
+    margin-top:26px;
+    font-size:1.12rem;
+    line-height:1.65;
+    color:var(--gray-on-dark);
+    max-width:75ch;
+  }
+
+  /* ---------- SLOT ONE (asymmetric split) ---------- */
+
+  section.slot-one{
+    background:var(--paper-alt);
+    padding:64px 0 0;
+  }
+
+  .slot-one-grid{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:48px;
+    align-items:start;
+  }
+
+  .pull-card{
+    background:var(--black);
+    border:1px solid var(--panel-line);
+    border-radius:16px;
+    padding:40px 34px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .profile-photo-frame{
+    width:96px;
+    height:96px;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid var(--crimson);
+    margin-bottom:24px;
+  }
+
+  .profile-photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  .pull-card .mark{
+    color:var(--crimson);
+    font-family:Georgia, serif;
+    font-size:2.6rem;
+    line-height:1;
+    margin-bottom:6px;
+  }
+
+  .pull-card blockquote{
+    color:#FFFFFF;
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:1.3rem;
+    line-height:1.5;
+    font-weight:700;
+  }
+
+  .pull-card .attrib{
+    margin-top:22px;
+    color:var(--gray-on-dark);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+  }
+
+  .photo-caption{
+    margin-top:18px;
+    padding:20px 22px;
+    background:#ffffff;
+    border:1px solid var(--line-light);
+    border-left:3px solid var(--crimson);
+    border-radius:0 10px 10px 0;
+    font-style:italic;
+    font-size:0.95rem;
+    line-height:1.6;
+    color:var(--ink);
+  }
+
+  .photo-caption a{
+    color:var(--crimson);
+    font-weight:600;
+    font-style:normal;
+    text-decoration:underline;
+  }
+
+  /* ---------- LETTER CARD ---------- */
+
+  .letter-card{
+    background:#ffffff;
+    color:var(--ink);
+    padding:52px 48px;
+    border-radius:16px;
+    border:1px solid var(--line-light);
+    box-shadow:0 20px 60px rgba(11,11,15,0.06);
+  }
+
+  .letter-card .salutation{
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:1.3rem;
+    font-weight:700;
+    color:var(--black);
+    margin-bottom:24px;
+  }
+
+  .letter-card p{
+    font-size:1.05rem;
+    line-height:1.75;
+    margin-bottom:22px;
+    max-width:70ch;
+  }
+
+  /* ---------- FULL WIDTH LETTER CONTINUATION ---------- */
+
+  .letter-continued{
+    background:var(--paper-alt);
+    max-width:920px;
+    margin:0 auto;
+    padding:56px 32px 0;
+  }
+
+  .letter-continued p{
+    font-size:1.05rem;
+    line-height:1.75;
+    margin-bottom:22px;
+    max-width:72ch;
+    color:var(--ink);
+  }
+
+  h2.section-headline{
+    font-family:Georgia, "Times New Roman", serif;
+    font-weight:700;
+    font-size:1.75rem;
+    color:var(--black);
+    margin:48px 0 26px;
+    line-height:1.35;
+  }
+
+  /* ---------- SLOT TWO (embedded comparison) ---------- */
+
+  .slot-two{
+    background:var(--paper-alt);
+    max-width:920px;
+    margin:0 auto;
+    padding:44px 32px;
+  }
+
+  .comparison-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border:1px solid var(--line-light);
+    border-radius:12px;
+    overflow:hidden;
+  }
+
+  .comparison-box .col{
+    padding:34px 28px;
+    font-size:1rem;
+    line-height:1.6;
+    font-weight:600;
+  }
+
+  .comparison-box .col.flaw{
+    color:var(--ink);
+    border-right:1px solid var(--line-light);
+    background:rgba(225,29,72,0.05);
+  }
+
+  .comparison-box .col.system{
+    color:var(--black);
+    background:#ffffff;
+  }
+
+  .comparison-caption{
+    margin-top:18px;
+    padding:20px 22px;
+    background:#ffffff;
+    border:1px solid var(--line-light);
+    border-left:3px solid var(--crimson);
+    border-radius:0 10px 10px 0;
+    font-style:italic;
+    font-size:0.95rem;
+    line-height:1.6;
+    color:var(--ink);
+  }
+
+  /* ---------- CTA BUTTON ---------- */
+
+  .cta-wrap{
+    background:var(--paper-alt);
+    max-width:920px;
+    margin:0 auto;
+    padding:52px 32px;
+    text-align:center;
+  }
+
+  .cta-button{
+    display:inline-block;
+    background:var(--crimson);
+    color:#ffffff;
+    font-weight:700;
+    font-size:1.05rem;
+    padding:20px 40px;
+    border-radius:8px;
+    letter-spacing:0.01em;
+    box-shadow:0 0 0 1px rgba(225,29,72,0.4), 0 10px 32px var(--crimson-glow);
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .cta-button:hover{
+    background:var(--crimson-dark);
+    transform:translateY(-2px);
+  }
+
+  /* ---------- SIGNATURE ---------- */
+
+  .signature-block{
+    background:var(--paper-alt);
+    max-width:920px;
+    margin:0 auto;
+    padding:20px 32px 76px;
+  }
+
+  .signature-block .sign-off{
+    font-size:1.05rem;
+    margin-bottom:4px;
+    color:var(--ink);
+  }
+
+  .signature-block .sign-name{
+    font-family:Georgia, "Times New Roman", serif;
+    font-weight:700;
+    font-size:1.3rem;
+    color:var(--black);
+    margin-top:14px;
+  }
+
+  .signature-block .sign-title{
+    font-size:0.95rem;
+    color:var(--gray-on-light);
+    margin-top:4px;
+  }
+
+  /* ---------- FOOTER ---------- */
+
+  footer.site-footer{
+    background:var(--black);
+    border-top:1px solid var(--panel-line);
+    padding:34px 32px 28px;
+    text-align:center;
+  }
+
+  .contact-row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+
+  .contact-row a{
+    color:var(--gray-on-dark);
+    font-size:0.85rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+  }
+
+  .contact-row a:hover{
+    color:#FFFFFF;
+  }
+
+  .contact-row .dot{
+    color:rgba(255,255,255,0.2);
+    font-size:0.8rem;
+  }
+
+  footer.site-footer p{
+    color:rgba(255,255,255,0.4);
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+
+  @media (max-width: 860px){
+    .slot-one-grid{
+      grid-template-columns:1fr;
+    }
+    .hero h1{
+      font-size:2rem;
+    }
+    .letter-card{
+      padding:36px 26px;
+    }
+    .comparison-box{
+      grid-template-columns:1fr;
+    }
+    .comparison-box .col.flaw{
+      border-right:none;
+      border-bottom:1px solid var(--line-light);
+    }
+    nav.primary-links ul{
+      gap:18px;
+    }
+  }
+
+  @media (max-width: 520px){
+    .hero{
+      padding:56px 22px 36px;
+    }
+    .hero-inner{ padding:0 22px; }
+    .letter-continued, .slot-two, .cta-wrap, .signature-block, .slot-one-grid{
+      padding-left:22px;
+      padding-right:22px;
+    }
+    .letter-card{
+      padding:28px 20px;
+    }
+  }
+
+  /* ---------- FOCUS STATES ---------- */
+
+  a:focus-visible, .cta-button:focus-visible{
+    outline:3px solid var(--crimson);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; }
+  }
+
+</style>
+</head>
+<body>
+
+  <header class="site-nav">
+    <div class="nav-inner">
+      <div class="brand">AMIR HAYAT</div>
+      <nav class="primary-links">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active" aria-current="page">About</a></li>
+          <li><a href="samples.html">Samples</a></li>
+          <li><a href="testimonials.html">Proof</a></li>
+          <li><a href="wins.html">Framework</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Why A Reformed Direct-Response Copywriter and Server Nerd Left The Corporate Agency World To Stop The Silent Theft In Your Inbox</h1>
+        <p class="subhead">The ugly truth about how the big email marketing agencies rob you blind with pretty templates while your deliverability bleeds out—and the accidental discovery that changed everything.</p>
+      </div>
+    </section>
+
+    <section class="slot-one">
+      <div class="slot-one-grid">
+        <div>
+          <div class="pull-card">
+            <div class="profile-photo-frame">
+              <img src="profile.jpg" alt="Amir Hayat, Email Deliverability Architect">
+            </div>
+            <div class="mark">"</div>
+            <blockquote>Writing the best copy in the world is worthless if the email never lands. Perfect delivery is worthless if the copy makes people hit "spam."</blockquote>
+            <div class="attrib">— The whole reason this business exists</div>
+          </div>
+          <div class="photo-caption">
+            No stock photography, no staged desk shots. Verify the work directly on <a href="https://www.linkedin.com/in/amir-hayat-0016b2266/" target="_blank" rel="noopener">LinkedIn</a>.
+          </div>
+        </div>
+
+        <div class="letter-card">
+          <p class="salutation">Dear Friend,</p>
+
+          <p>My name is Amir Hayat, and I am an anomaly in the marketing world.</p>
+
+          <p>If you look at most email marketers today, they fall into one of two camps.</p>
+
+          <p>On one side, you have the "creatives." These are the pretty-boy copywriters and designers who obsess over beautiful fonts, sleek graphics, and clever puns. They write poetic copy that wins awards but fails to make the cash register ring.</p>
+
+          <p>On the other side, you have the "technical nerds." These are the server engineers who can write code in their sleep and talk about domain protocols all day, but couldn't write a compelling sales angle to save their own lives.</p>
+
+          <p>For years, I watched from inside high-priced marketing agencies as these two sides refused to talk to each other.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="letter-continued">
+
+      <p>The copywriters would write long, beautiful email sequences. The technical team would upload them. And then... nothing would happen.</p>
+
+      <p>The agency would scratch its head, blame the market, and send the client a bill for $5,000 anyway.</p>
+
+      <p>But I couldn't sleep at night knowing business owners were being robbed in broad daylight. So I did something crazy. I locked myself in a room for six months and forced myself to master both sides of the coin. I studied the deep psychology of human desire under the greatest direct-response masters, and I dug into the cold, mechanical guts of email servers, DNS records, and delivery algorithms.</p>
+
+      <p>That's when I found the thing that changed my business for good.</p>
+
+      <h2 class="section-headline">The Turning Point</h2>
+
+      <p>I realized the tech monopolies—Google, Yahoo, and Microsoft—had quietly declared war on businesses.</p>
+
+      <p>They didn't want you hitting your customers' inboxes anymore. They wanted to hide your emails in the "Promotions" tab or bury them in the "Spam" folder so you'd be forced to spend all your money on their ad networks instead.</p>
+
+      <p>And the worst part? The standard tools you use—Klaviyo, ActiveCampaign, whatever ESP you're on—won't save you. They will happily take your money every month while your messages vanish into a black hole.</p>
+
+      <p>I realized the best copy in the world is worthless if the email never lands in front of human eyes. And perfect technical delivery is worthless if your copy is so boring it makes people hit "spam."</p>
+
+      <p>You don't need a copywriter. You don't need a server engineer.</p>
+
+      <p>You need a full-stack email specialist. Someone who bridges the gap, fixes the tech, sharpens the copy, and turns your list back into an automated cash-printing machine.</p>
+
+      <p>That's why I walked away from the cozy agency world. My mission isn't to help big corporations get slightly richer. It's to help 7-to-8-figure e-commerce store owners, creators, and high-ticket info-publishers reclaim the profits being stolen from them by invisible algorithms.</p>
+
+    </section>
+
+    <section class="slot-two">
+      <div class="comparison-box">
+        <div class="col flaw">Standard Agency Flaw (Beautiful Copy ❌ Lost in Spam)</div>
+        <div class="col system">Full-Stack System (Psychological Copy + Verified Technical Delivery = Direct To Main Inbox ✅ Cash Generated)</div>
+      </div>
+      <div class="comparison-caption">
+        "The full-stack advantage: bridging the gap between creative salesmanship and bulletproof technical deliverability."
+      </div>
+    </section>
+
+    <section class="letter-continued">
+
+      <h2 class="section-headline">My Uncompromising Philosophy</h2>
+
+      <p>I do business very differently than the rest of this industry.</p>
+
+      <p>I don't believe in long-term, bloated retainer contracts that lock you in while your results tank. I don't believe in vanity metrics like "impressions" or "brand awareness."</p>
+
+      <p>I only care about trackable, verifiable revenue.</p>
+
+      <p>If I can't look at your dashboard and show you exactly how many dollars my emails pulled out of your dormant subscriber list, I don't deserve a single dime of your money.</p>
+
+      <p>That's why I don't ask you to buy a blind package or take a massive leap of faith on me. I put my own skin in the game.</p>
+
+      <h2 class="section-headline">Where This Leaves You</h2>
+
+      <p>If your email open rates have suddenly plummeted, if you are bleeding cash on rising Meta and Google ad costs, or if you suspect your automated flows are leaking money every time a customer abandons their cart... let's stop the bleeding today.</p>
+
+      <p>I'm not going to ask you to hire me. Instead, I'm going to make you an offer that puts nearly all of the risk on my shoulders.</p>
+
+      <p>Click below and you can claim a 100% free, 7-minute video revenue audit, where I get view-only access to your account and map out exactly where your cash is leaking. Or, if you'd rather skip the line, claim the risk-free 14-Day Performance Pivot, where I rebuild your core flows for $1,000—and if it doesn't make you at least $3,000 back in 30 days, you get every cent of that back.</p>
+
+      <p>The tech giants are counting on you to do nothing so they can keep bleeding your margins dry. Don't let them win.</p>
+
+      <p>Pick your path below.</p>
+
+    </section>
+
+    <section class="cta-wrap">
+      <a href="contact.html" class="cta-button">Claim My Free Audit or Risk-Free Performance Pivot</a>
+    </section>
+
+    <section class="signature-block">
+      <p class="sign-off">Sincerely,</p>
+      <p class="sign-name">Amir Hayat</p>
+      <p class="sign-title">Email Deliverability Architect</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="contact-row">
+      <a href="mailto:itsaamirhayat@gmail.com">Email</a>
+      <span class="dot">•</span>
+      <a href="https://www.linkedin.com/in/amir-hayat-0016b2266/" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="dot">•</span>
+      <a href="https://x.com/amir_malic" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+    <p>© 2026 Amir Hayat. All Rights Reserved. | Designed for Pure Performance</p>
+  </footer>
+
+</body>
+</html>

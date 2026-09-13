@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samples — Amir Hayat, Email Deliverability Architect</title>
+<style>
+
+  :root{
+    --black:#0B0B0F;
+    --panel:#15151D;
+    --panel-line:rgba(255,255,255,0.08);
+    --paper:#FFFFFF;
+    --paper-alt:#F6F6F8;
+    --ink:#15151B;
+    --gray-on-light:#5B5B66;
+    --gray-on-dark:#9A9AA6;
+    --crimson:#E11D48;
+    --crimson-dark:#B31139;
+    --crimson-glow:rgba(225,29,72,0.45);
+    --line-light:#E7E7EC;
+    --code-bg:#101018;
+    --code-text:#F6F6F8;
+  }
+
+  *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body{
+    height: auto !important;
+    overflow-y: auto !important;
+    background: var(--black);
+  }
+
+  body{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 17px;
+  }
+
+  main, section{
+    height: auto !important;
+    overflow-y: auto !important;
+  }
+
+  a{ color: var(--crimson); text-decoration: none; }
+  a:hover{ color: var(--crimson-dark); }
+  a:focus-visible, button:focus-visible{
+    outline: 3px solid var(--crimson);
+    outline-offset: 3px;
+  }
+
+  img, svg{ max-width: 100%; display: block; }
+
+  .wrap{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============ NAVIGATION ============ */
+
+  header.site-nav{
+    background: var(--black);
+    border-bottom: 1px solid var(--panel-line);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .nav-inner{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    max-width: 1120px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .brand{
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 19px;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+  }
+
+  nav.primary-links ul{
+    list-style: none;
+    display: flex;
+    gap: 26px;
+    flex-wrap: wrap;
+  }
+
+  nav.primary-links a{
+    color: var(--gray-on-dark);
+    font-size: 14.5px;
+    font-weight: 500;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  nav.primary-links a:hover{
+    color: #FFFFFF;
+  }
+
+  nav.primary-links a.active{
+    color: #FFFFFF;
+    border-bottom-color: var(--crimson);
+  }
+
+  /* ============ HERO (DARK) ============ */
+
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(225,29,72,0.16), transparent 60%),
+      var(--black);
+    padding: 92px 0 68px;
+  }
+
+  .hero .wrap{
+    max-width: 880px;
+  }
+
+  .hero-eyebrow{
+    font-size: 14px;
+    color: var(--crimson);
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+
+  h1.hero-headline{
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    color: #FFFFFF;
+    font-size: clamp(32px, 5vw, 50px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    max-width: 18ch;
+  }
+
+  p.hero-sub{
+    margin-top: 26px;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gray-on-dark);
+    max-width: 62ch;
+    line-height: 1.55;
+  }
+
+  /* ============ INTRO COPY (LIGHT) ============ */
+
+  .intro{
+    background: var(--paper);
+    padding: 72px 0;
+    border-bottom: 1px solid var(--line-light);
+  }
+
+  .intro .wrap{
+    max-width: 720px;
+  }
+
+  .intro p{
+    font-size: 17.5px;
+    color: var(--ink);
+    margin-bottom: 24px;
+    max-width: 64ch;
+  }
+
+  .intro p:first-of-type{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 23px;
+    color: var(--black);
+    font-weight: 700;
+  }
+
+  .intro p.emphasis{
+    border-left: 3px solid var(--crimson);
+    padding-left: 22px;
+    font-style: italic;
+    color: var(--black);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+  }
+
+  /* ============ METHODOLOGY SAMPLES GRID (LIGHT) ============ */
+
+  .samples{
+    background: var(--paper);
+    padding: 12px 0 40px;
+  }
+
+  .samples-heading{
+    max-width: 720px;
+    margin-bottom: 48px;
+  }
+
+  .samples-heading h2{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(26px, 3.2vw, 34px);
+    color: var(--black);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .samples-heading p{
+    color: var(--gray-on-light);
+    font-size: 15.5px;
+    margin-top: 14px;
+  }
+
+  .card{
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 44px;
+    padding: 48px 0;
+    border-top: 1px solid var(--line-light);
+  }
+
+  .card:last-of-type{
+    border-bottom: 1px solid var(--line-light);
+  }
+
+  .card-meta{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .niche-tag{
+    display: inline-block;
+    background: var(--black);
+    color: #FFFFFF;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 6px;
+    width: fit-content;
+    line-height: 1.3;
+  }
+
+  .card-index{
+    font-family: Georgia, serif;
+    font-size: 14px;
+    color: var(--gray-on-light);
+  }
+
+  .card-body h3{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(21px, 2.4vw, 26px);
+    color: var(--black);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    max-width: 22ch;
+  }
+
+  .card-body p{
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 16px;
+    max-width: 70ch;
+  }
+
+  .card-body p.blueprint{
+    color: var(--gray-on-light);
+    font-size: 15px;
+    border-top: 1px solid var(--line-light);
+    padding-top: 16px;
+    margin-top: 6px;
+  }
+
+  .blueprint strong{
+    color: var(--black);
+    font-weight: 700;
+  }
+
+  .code-block{
+    background: var(--code-bg);
+    color: var(--code-text);
+    margin-top: 26px;
+    padding: 26px 28px;
+    border-radius: 10px;
+    overflow-x: auto;
+  }
+
+  .code-block .code-label{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+    color: var(--crimson);
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .code-block pre{
+    font-family: "SF Mono", "Courier New", Courier, monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  /* ============ THE VAULT (LIGHT ALT) ============ */
+
+  .vault-section{
+    background: var(--paper-alt);
+    padding: 76px 0;
+    border-top: 1px solid var(--line-light);
+    border-bottom: 1px solid var(--line-light);
+  }
+
+  .vault-heading{
+    max-width: 760px;
+    margin-bottom: 44px;
+  }
+
+  .vault-heading h2{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(26px, 3.2vw, 32px);
+    color: var(--black);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .vault-heading p{
+    color: var(--gray-on-light);
+    font-size: 16px;
+    margin-top: 14px;
+    max-width: 68ch;
+  }
+
+  .vault-grid{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 980px){
+    .vault-grid{ grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 620px){
+    .vault-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .vault-card{
+    background: #ffffff;
+    border: 1px solid var(--line-light);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 26px rgba(11,11,15,0.05);
+  }
+
+  .vault-card img{
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-bottom: 1px solid var(--line-light);
+  }
+
+  .vault-card-footer{
+    padding: 14px 14px 16px;
+  }
+
+  .vault-card-footer .vault-label{
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+
+  .vault-card-footer a.gdoc-link{
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--crimson);
+  }
+
+  /* ============ CLOSING CTA (DARK) ============ */
+
+  .closing{
+    background: var(--black);
+    color: #FFFFFF;
+    padding: 92px 0;
+  }
+
+  .closing .wrap{
+    max-width: 680px;
+    text-align: left;
+  }
+
+  .closing p{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.4;
+    margin-bottom: 40px;
+  }
+
+  .cta-button{
+    display: inline-block;
+    background: var(--crimson);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16.5px;
+    padding: 18px 36px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 0 1px rgba(225,29,72,0.4), 0 10px 32px var(--crimson-glow);
+    transition: transform 0.15s ease, background 0.2s ease;
+  }
+
+  .cta-button:hover{
+    background: var(--crimson-dark);
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  /* ============ FOOTER ============ */
+
+  footer.site-footer{
+    padding: 34px 0 30px;
+    background: var(--black);
+    border-top: 1px solid var(--panel-line);
+  }
+
+  footer.site-footer .wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .contact-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .contact-row a{
+    color: var(--gray-on-dark);
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .contact-row a:hover{ color: #FFFFFF; }
+
+  .contact-row .dot{
+    color: rgba(255,255,255,0.2);
+    font-size: 13px;
+  }
+
+  footer.site-footer p{
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ============ RESPONSIVE ============ */
+
+  @media (max-width: 760px){
+    .nav-inner{
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 18px 24px;
+    }
+
+    nav.primary-links ul{
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .wrap{ padding: 0 24px; }
+
+    .hero{ padding: 64px 0 48px; }
+
+    .card{
+      grid-template-columns: 1fr;
+      gap: 20px;
+      padding: 36px 0;
+    }
+
+    .card-meta{
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition: none !important; }
+  }
+
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="brand">AMIR HAYAT</div>
+    <nav class="primary-links" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="samples.html" class="active" aria-current="page">Samples</a></li>
+        <li><a href="testimonials.html">Proof</a></li>
+        <li><a href="wins.html">Framework</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <p class="hero-eyebrow">Page 3 — Writing Samples</p>
+      <h1 class="hero-headline">Three Full-Stack Scripts, Plus 15 Real Emails I've Actually Sent</h1>
+      <p class="hero-sub">No artsy corporate designs. No vanity metrics. Below is both the raw methodology I build sequences with, and an actual vault of screenshots from live sends — with the full text linked next to every one.</p>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="wrap">
+      <p>Look, let's be completely honest with each other.</p>
+      <p>Most marketing agencies hide behind pretty, colorful email templates and sleek graphic designs. They show you a beautiful layout because they're hoping you won't ask the only question that actually matters: "How much money did this email make?"</p>
+      <p>Pretty emails don't sell. Graphics don't talk to the human subconscious. And complex HTML templates are the number-one reason your messages get thrown into the digital graveyard of the "Promotions" tab by Google's algorithms.</p>
+      <p class="emphasis">Below, you won't find an art gallery. You'll find the raw, street-smart, psychological architecture I build sequences with.</p>
+      <p>First, three full breakdowns showing exactly how I construct a sequence and why each psychological lever sits where it does. Then, further down, an actual vault of 15 real emails I've written and sent — screenshotted straight from the source, with the full Google Doc text linked next to each one so you can read every word for yourself.</p>
+    </div>
+  </section>
+
+  <section class="samples">
+    <div class="wrap">
+
+      <div class="samples-heading">
+        <h2>Three niches. Zero fluff.</h2>
+        <p>These three breakdowns are written to teach the mechanics — built for hypothetical scenarios rather than naming a client whose permission I don't have to share their numbers publicly. The real, real-name proof lives in the vault below.</p>
+      </div>
+
+      <article class="card">
+        <div class="card-meta">
+          <span class="niche-tag">Coaching &amp; Info-Marketers</span>
+          <span class="card-index">Sample 01</span>
+        </div>
+        <div class="card-body">
+          <h3>The "Accidental Insanity" Price-Drop Flash Sequence</h3>
+          <p>A raw, 3-part text-only sequence, written for a hypothetical elite info-product creator whose course sales have stalled out. Instead of a slick corporate discount announcement, the copy uses the "Reason Why" hook—explaining that a backend system glitch accidentally sent a raw testing coupon to a handful of people, and instead of quietly fixing it, the creator decides to let the next wave of fast-movers grab the same discount.</p>
+          <p class="blueprint"><strong>Why This Works:</strong> The "accidental" frame gives urgency a believable cause instead of a manufactured deadline, which is what makes scarcity land instead of feeling like a sales tactic. Sent as plain text from a personal-feeling domain with clean SPF/DKIM alignment, this style is built to bypass the Promotions tab rather than get flagged as a bulk campaign.</p>
+
+          <div class="code-block">
+            <span class="code-label">RAW SCRIPT — EMAIL 1 OF 3</span>
+            <pre>Subject: {{ first_name }}, I might get fired for sending you this...
+
+Listen close. I don't have much time before my partner logs 
+into the dashboard and sees what I just did. 
+
+If you are reading this, it means you have exactly 12 minutes 
+to make a choice that will either save your profit margins 
+or leave you at the mercy of Zuckerberg's next ad-cost hike...</pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-meta">
+          <span class="niche-tag">E-commerce Stores</span>
+          <span class="card-index">Sample 02</span>
+        </div>
+        <div class="card-body">
+          <h3>The "Cart Abandonment Trauma" Flow</h3>
+          <p>Most abandoned cart emails say "Oops, you left something behind!" and offer a 10% coupon. It's boring and predictable. This script takes the opposite approach: a 2-step automated sequence that hits the buyer 45 minutes after abandonment. Step 1 assumes the checkout page glitched on them and apologizes for the technical error, offering a direct link to bypass the line. Step 2 hits 24 hours later with a hard scarcity hook tied to real inventory logic, not a fake countdown.</p>
+          <p class="blueprint"><strong>Why This Works:</strong> Apologizing for a "glitch" removes the shame a buyer feels about abandoning, which lowers resistance to clicking back in. Tight, single-sentence paragraphs and high-contrast visual sections keep this scannable on mobile, where most cart-recovery opens actually happen.</p>
+
+          <div class="code-block">
+            <span class="code-label">RAW SCRIPT — STEP 1 OF 2</span>
+            <pre>Subject: System error on checkout page (Order #{{ checkout_id }})
+
+Hey {{ first_name }}, it looks like our servers completely melted down 
+right when you were hitting the final checkout button. 
+
+I checked the stock log and your cart items are still temporarily reserved, 
+but the queue is clearing fast. I opened an isolated personal pipeline link 
+for you below so you can bypass the checkout glitch entirely...</pre>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-meta">
+          <span class="niche-tag">Elite Professionals &amp; Newsletters</span>
+          <span class="card-index">Sample 03</span>
+        </div>
+        <div class="card-body">
+          <h3>The "Kitchen-Table Dialogue" Long-Cycle Nurture</h3>
+          <p>Written for the scenario of a high-volume newsletter with a large, dormant audience that's stopped opening broadcasts. This sample is a deep-empathy relationship script. It opens with a vulnerable subject line — "I'm deleting half of this list tomorrow morning" — agitates the pain of information overload, and pivots into a raw, one-on-one conversation instead of a broadcast voice.</p>
+          <p class="blueprint"><strong>Why This Works:</strong> Threatening to unsubscribe people yourself flips the psychology — instead of the reader ignoring you, they're suddenly afraid of losing access. Plain-text formatting designed to look like a personal note from a friend is what keeps this out of the "Promotions" tab in the first place.</p>
+
+          <div class="code-block">
+            <span class="code-label">RAW SCRIPT — OPENING NOTE</span>
+            <pre>Subject: I'm deleting half of this list tomorrow morning.
+
+Let's be completely transparent, {{ first_name }}. 
+
+Your time is rare, and my server bill is getting ridiculously expensive. 
+If you aren't opening these messages, it means I am just cluttering your 
+inbox space, and I refuse to be another generic corporate spammer...</pre>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="vault-section">
+    <div class="wrap">
+      <div class="vault-heading">
+        <h2>The Vault: 15 Real Emails, Screenshotted Straight From The Source</h2>
+        <p>No mockups, no reconstructions. Every thumbnail below is a real send. Click through to the full Google Doc text of each one if you want to read the whole thing beat by beat.</p>
+      </div>
+
+      <div class="vault-grid">
+        <div class="vault-card">
+          <img src="email-sample-1.png" alt="Screenshot of real email sample 1">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 01</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-2.png" alt="Screenshot of real email sample 2">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 02</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-3.png" alt="Screenshot of real email sample 3">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 03</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-4.png" alt="Screenshot of real email sample 4">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 04</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-5.png" alt="Screenshot of real email sample 5">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 05</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-6.png" alt="Screenshot of real email sample 6">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 06</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-7.png" alt="Screenshot of real email sample 7">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 07</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-8.png" alt="Screenshot of real email sample 8">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 08</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-9.png" alt="Screenshot of real email sample 9">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 09</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-10.png" alt="Screenshot of real email sample 10">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 10</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-11.png" alt="Screenshot of real email sample 11">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 11</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-12.png" alt="Screenshot of real email sample 12">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 12</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-13.png" alt="Screenshot of real email sample 13">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 13</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-14.png" alt="Screenshot of real email sample 14">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 14</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+        <div class="vault-card">
+          <img src="email-sample-15.png" alt="Screenshot of real email sample 15">
+          <div class="vault-card-footer">
+            <div class="vault-label">Email Sample 15</div>
+            <a class="gdoc-link" href="PASTE_GDOC_LINK_HERE" target="_blank" rel="noopener">Read full text →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <p>If you want to see how this style adapts to your exact list and your exact numbers, let's get on a call and open the books.</p>
+      <a href="contact.html" class="cta-button">Claim My Free Revenue Audit</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="contact-row">
+      <a href="mailto:itsaamirhayat@gmail.com">Email</a>
+      <span class="dot">•</span>
+      <a href="https://www.linkedin.com/in/amir-hayat-0016b2266/" target="_blank" rel="noopener">LinkedIn</a>
+      <span class="dot">•</span>
+      <a href="https://x.com/amir_malic" target="_blank" rel="noopener">X / Twitter</a>
+    </div>
+    <p>&copy; 2026 Amir Hayat. All Rights Reserved. | Designed for Pure Performance</p>
+  </div>
+</footer>
+
+</body>
+</html>
