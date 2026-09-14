@@ -210,8 +210,8 @@
 
   .conversation-grid{
     display:grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap:20px;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
   }
 
   @media (max-width:900px){
@@ -226,20 +226,10 @@
     box-shadow:0 12px 30px rgba(11,11,15,0.05);
   }
 
-  .conversation-card .img-frame{
-    width:100%;
-    height:380px;
-    background:var(--paper-alt);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-  }
-
   .conversation-card img{
     width:100%;
-    height:100%;
-    object-fit:contain;
+    height:auto;
+    display:block;
   }
 
   .conversation-card .label{
@@ -601,31 +591,31 @@
         </div>
         <div class="conversation-grid">
           <div class="conversation-card">
-            <div class="img-frame"><img src="chat-testimonial-1.png" alt="Screenshot of a real client testimonial conversation"></div>
+            <img src="chat-testimonial-1.png" alt="Screenshot of a real client testimonial conversation">
             <div class="label">Conversation 01</div>
           </div>
           <div class="conversation-card">
-            <div class="img-frame"><img src="chat-testimonial-2.png" alt="Screenshot of a real client testimonial conversation"></div>
+            <img src="chat-testimonial-2.png" alt="Screenshot of a real client testimonial conversation">
             <div class="label">Conversation 02</div>
           </div>
           <div class="conversation-card">
-            <div class="img-frame"><img src="chat-testimonial-3.png" alt="Screenshot of a real client testimonial conversation"></div>
+            <img src="chat-testimonial-3.png" alt="Screenshot of a real client testimonial conversation">
             <div class="label">Conversation 03</div>
           </div>
           <div class="conversation-card">
-            <div class="img-frame"><img src="chat-testimonial-4.png" alt="Screenshot of a real client testimonial conversation"></div>
+            <img src="chat-testimonial-4.png" alt="Screenshot of a real client testimonial conversation">
             <div class="label">Conversation 04</div>
           </div>
           <div class="conversation-card">
-            <div class="img-frame"><img src="chat-testimonial-5.png" alt="Screenshot of a real client testimonial conversation"></div>
+            <img src="chat-testimonial-5.png" alt="Screenshot of a real client testimonial conversation">
             <div class="label">Conversation 05</div>
           </div>
           <div class="conversation-card">
-            <div class="img-frame"><img src="chat-testimonial-6.png" alt="Screenshot of a real client testimonial conversation"></div>
+            <img src="chat-testimonial-6.png" alt="Screenshot of a real client testimonial conversation">
             <div class="label">Conversation 06</div>
           </div>
           <div class="conversation-card">
-            <div class="img-frame"><img src="chat-testimonial-7.png" alt="Screenshot of a real client testimonial conversation"></div>
+            <img src="chat-testimonial-7.png" alt="Screenshot of a real client testimonial conversation">
             <div class="label">Conversation 07</div>
           </div>
         </div>
@@ -725,7 +715,7 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="contact-row">
-        <a href="mailto:itsaamirhayat@gmail.com">Email</a>
+        <a href="mailto:itsaamirhayat@gmail.com" class="email-link">itsaamirhayat@gmail.com</a>
         <span class="dot">•</span>
         <a href="https://www.linkedin.com/in/amir-hayat-0016b2266/" target="_blank" rel="noopener">LinkedIn</a>
         <span class="dot">•</span>
@@ -738,6 +728,82 @@
       <p>© 2026 Amir Hayat. All Rights Reserved. | Designed for Pure Performance</p>
     </div>
   </footer>
+
+
+<!-- ===== GLOBAL IMAGE LIGHTBOX ===== -->
+<style>
+  .lightbox-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(5,5,8,0.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    padding:32px;
+    cursor:zoom-out;
+  }
+  .lightbox-overlay.active{ display:flex; }
+  .lightbox-overlay img{
+    max-width:95vw;
+    max-height:95vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    border-radius:8px;
+    box-shadow:0 30px 80px rgba(0,0,0,0.6);
+  }
+  .lightbox-close{
+    position:fixed;
+    top:24px;
+    right:28px;
+    color:#FFFFFF;
+    font-size:32px;
+    line-height:1;
+    font-family:-apple-system, sans-serif;
+    cursor:pointer;
+    z-index:10000;
+    opacity:0.8;
+  }
+  .lightbox-close:hover{ opacity:1; }
+</style>
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <img id="lightboxImg" src="" alt="">
+</div>
+<script>
+(function(){
+  var overlay = document.getElementById('lightboxOverlay');
+  var overlayImg = document.getElementById('lightboxImg');
+  var closeBtn = document.getElementById('lightboxClose');
+
+  function openLightbox(src, alt){
+    overlayImg.src = src;
+    overlayImg.alt = alt || '';
+    overlay.classList.add('active');
+  }
+  function closeLightbox(){
+    overlay.classList.remove('active');
+    overlayImg.src = '';
+  }
+
+  document.querySelectorAll('main img').forEach(function(img){
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function(){
+      openLightbox(img.src, img.alt);
+    });
+  });
+
+  overlay.addEventListener('click', closeLightbox);
+  closeBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    closeLightbox();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
+  });
+})();
+</script>
 
 </body>
 </html>
