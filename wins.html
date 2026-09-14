@@ -298,10 +298,20 @@
     box-shadow:0 8px 20px rgba(11,11,15,0.05);
   }
 
+  .win-tile .img-frame{
+    width:100%;
+    height:180px;
+    background:var(--paper-alt);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+
   .win-tile img{
     width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
+    height:100%;
+    object-fit:contain;
   }
 
   .win-tile .win-tile-num{
@@ -532,7 +542,7 @@
 
   <section class="intro">
     <div class="wrap">
-      <p class="lede">Let's cut through the noise and talk about real life.</p>
+      <p class="lede">Forget the highlight reel. Here's the actual scorecard.</p>
       <p>The internet is filled with self-proclaimed "gurus" who read a book on email marketing and think they're qualified to handle a 7-figure brand's cash artery. They talk about "brand awareness" and "engagement metrics."</p>
       <p class="stark">I don't. I talk about thresholds you can check yourself, today, in your own account.</p>
       <p>When Google and Yahoo tightened their bulk-sender regulations, they wiped out thousands of businesses relying on old, lazy email tricks. Below is the exact scorecard I run on every account I touch — not a highlight reel of someone else's results, but the numbers that tell you whether your own list is healthy or hemorrhaging. Further down, you'll find all 27 of the actual wins I've pulled for past accounts: real revenue dashboards, real Postmaster scores, no vague estimates.</p>
@@ -579,33 +589,33 @@
       </div>
 
       <div class="wins-full-grid">
-        <div class="win-tile"><img src="win-1.png" alt="Documented win screenshot 1"><div class="win-tile-num">Win 01</div></div>
-        <div class="win-tile"><img src="win-2.png" alt="Documented win screenshot 2"><div class="win-tile-num">Win 02</div></div>
-        <div class="win-tile"><img src="win-3.png" alt="Documented win screenshot 3"><div class="win-tile-num">Win 03</div></div>
-        <div class="win-tile"><img src="win-4.png" alt="Documented win screenshot 4"><div class="win-tile-num">Win 04</div></div>
-        <div class="win-tile"><img src="win-5.png" alt="Documented win screenshot 5"><div class="win-tile-num">Win 05</div></div>
-        <div class="win-tile"><img src="win-6.png" alt="Documented win screenshot 6"><div class="win-tile-num">Win 06</div></div>
-        <div class="win-tile"><img src="win-7.png" alt="Documented win screenshot 7"><div class="win-tile-num">Win 07</div></div>
-        <div class="win-tile"><img src="win-8.png" alt="Documented win screenshot 8"><div class="win-tile-num">Win 08</div></div>
-        <div class="win-tile"><img src="win-9.png" alt="Documented win screenshot 9"><div class="win-tile-num">Win 09</div></div>
-        <div class="win-tile"><img src="win-10.png" alt="Documented win screenshot 10"><div class="win-tile-num">Win 10</div></div>
-        <div class="win-tile"><img src="win-11.png" alt="Documented win screenshot 11"><div class="win-tile-num">Win 11</div></div>
-        <div class="win-tile"><img src="win-12.png" alt="Documented win screenshot 12"><div class="win-tile-num">Win 12</div></div>
-        <div class="win-tile"><img src="win-13.png" alt="Documented win screenshot 13"><div class="win-tile-num">Win 13</div></div>
-        <div class="win-tile"><img src="win-14.png" alt="Documented win screenshot 14"><div class="win-tile-num">Win 14</div></div>
-        <div class="win-tile"><img src="win-15.png" alt="Documented win screenshot 15"><div class="win-tile-num">Win 15</div></div>
-        <div class="win-tile"><img src="win-16.png" alt="Documented win screenshot 16"><div class="win-tile-num">Win 16</div></div>
-        <div class="win-tile"><img src="win-17.png" alt="Documented win screenshot 17"><div class="win-tile-num">Win 17</div></div>
-        <div class="win-tile"><img src="win-18.png" alt="Documented win screenshot 18"><div class="win-tile-num">Win 18</div></div>
-        <div class="win-tile"><img src="win-19.png" alt="Documented win screenshot 19"><div class="win-tile-num">Win 19</div></div>
-        <div class="win-tile"><img src="win-20.png" alt="Documented win screenshot 20"><div class="win-tile-num">Win 20</div></div>
-        <div class="win-tile"><img src="win-21.png" alt="Documented win screenshot 21"><div class="win-tile-num">Win 21</div></div>
-        <div class="win-tile"><img src="win-22.png" alt="Documented win screenshot 22"><div class="win-tile-num">Win 22</div></div>
-        <div class="win-tile"><img src="win-23.png" alt="Documented win screenshot 23"><div class="win-tile-num">Win 23</div></div>
-        <div class="win-tile"><img src="win-24.png" alt="Documented win screenshot 24"><div class="win-tile-num">Win 24</div></div>
-        <div class="win-tile"><img src="win-25.png" alt="Documented win screenshot 25"><div class="win-tile-num">Win 25</div></div>
-        <div class="win-tile"><img src="win-26.png" alt="Documented win screenshot 26"><div class="win-tile-num">Win 26</div></div>
-        <div class="win-tile"><img src="win-27.png" alt="Documented win screenshot 27"><div class="win-tile-num">Win 27</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-1.png" alt="Documented win screenshot 1"></div><div class="win-tile-num">Win 01</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-2.png" alt="Documented win screenshot 2"></div><div class="win-tile-num">Win 02</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-3.png" alt="Documented win screenshot 3"></div><div class="win-tile-num">Win 03</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-4.png" alt="Documented win screenshot 4"></div><div class="win-tile-num">Win 04</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-5.png" alt="Documented win screenshot 5"></div><div class="win-tile-num">Win 05</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-6.png" alt="Documented win screenshot 6"></div><div class="win-tile-num">Win 06</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-7.png" alt="Documented win screenshot 7"></div><div class="win-tile-num">Win 07</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-8.png" alt="Documented win screenshot 8"></div><div class="win-tile-num">Win 08</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-9.png" alt="Documented win screenshot 9"></div><div class="win-tile-num">Win 09</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-10.png" alt="Documented win screenshot 10"></div><div class="win-tile-num">Win 10</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-11.png" alt="Documented win screenshot 11"></div><div class="win-tile-num">Win 11</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-12.png" alt="Documented win screenshot 12"></div><div class="win-tile-num">Win 12</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-13.png" alt="Documented win screenshot 13"></div><div class="win-tile-num">Win 13</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-14.png" alt="Documented win screenshot 14"></div><div class="win-tile-num">Win 14</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-15.png" alt="Documented win screenshot 15"></div><div class="win-tile-num">Win 15</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-16.png" alt="Documented win screenshot 16"></div><div class="win-tile-num">Win 16</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-17.png" alt="Documented win screenshot 17"></div><div class="win-tile-num">Win 17</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-18.png" alt="Documented win screenshot 18"></div><div class="win-tile-num">Win 18</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-19.png" alt="Documented win screenshot 19"></div><div class="win-tile-num">Win 19</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-20.png" alt="Documented win screenshot 20"></div><div class="win-tile-num">Win 20</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-21.png" alt="Documented win screenshot 21"></div><div class="win-tile-num">Win 21</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-22.png" alt="Documented win screenshot 22"></div><div class="win-tile-num">Win 22</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-23.png" alt="Documented win screenshot 23"></div><div class="win-tile-num">Win 23</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-24.png" alt="Documented win screenshot 24"></div><div class="win-tile-num">Win 24</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-25.png" alt="Documented win screenshot 25"></div><div class="win-tile-num">Win 25</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-26.png" alt="Documented win screenshot 26"></div><div class="win-tile-num">Win 26</div></div>
+        <div class="win-tile"><div class="img-frame"><img src="win-27.png" alt="Documented win screenshot 27"></div><div class="win-tile-num">Win 27</div></div>
       </div>
     </div>
   </section>
@@ -649,6 +659,10 @@
       <a href="https://www.linkedin.com/in/amir-hayat-0016b2266/" target="_blank" rel="noopener">LinkedIn</a>
       <span class="dot">•</span>
       <a href="https://x.com/amir_malic" target="_blank" rel="noopener">X / Twitter</a>
+      <span class="dot">•</span>
+      <a href="https://www.facebook.com/people/Malik-Aamir/pfbid0hhsFLox1CPuWCnT3RvNuiBL9CaYHHUoV2LsBa5L5jBvhjU8kzQaRB63dspYFdnkul/" target="_blank" rel="noopener">Facebook</a>
+      <span class="dot">•</span>
+      <a href="https://www.instagram.com/malikamir019/" target="_blank" rel="noopener">Instagram</a>
     </div>
     <p>&copy; 2026 Amir Hayat. All Rights Reserved.</p>
   </div>
