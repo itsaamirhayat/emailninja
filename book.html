@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amir Hayat — Emergency Diagnostic Call</title>
+<title>Amir Hayat — Stop Renting Your Customers From Mark Zuckerberg</title>
 <style>
   :root{
     --black:#0B0B0F;
@@ -20,7 +20,7 @@
     --line-light:#E7E7EC;
   }
 
-  *{box-sizing:border-box;margin:0;padding:0;}
+  *{ box-sizing:border-box; margin:0; padding:0; }
 
   html, body{
     height:auto !important;
@@ -31,22 +31,14 @@
     scroll-behavior:smooth;
   }
 
-  main{
-    height:auto !important;
-    overflow-y:auto !important;
-    max-width:1180px;
-    margin:0 auto;
-    padding:0 32px;
-  }
+  main, section{ height:auto !important; overflow-y:auto !important; }
 
-  section{
-    height:auto !important;
-    overflow-y:auto !important;
-  }
+  img, svg{ max-width:100%; display:block; }
 
-  /* ---------- BRAND HEADER ---------- */
+  .wrap{ max-width:880px; margin:0 auto; padding:0 32px; }
+
   .brand-header{
-    padding:36px 0 24px;
+    padding:32px 0;
     text-align:center;
     border-bottom:1px solid var(--panel-line);
   }
@@ -59,145 +51,310 @@
     font-weight:700;
   }
 
-  /* ---------- HERO ---------- */
   .hero{
-    padding:64px 0 48px;
-    text-align:left;
+    background:
+      radial-gradient(ellipse 900px 500px at 20% -10%, rgba(225,29,72,0.18), transparent 60%),
+      var(--black);
+    padding:72px 0 44px;
+    text-align:center;
+  }
+
+  .eyebrow{
+    color:var(--crimson);
+    font-weight:700;
+    font-size:13.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-bottom:20px;
   }
 
   .hero h1{
     font-family:Georgia, "Times New Roman", serif;
     font-weight:700;
     color:#FFFFFF;
-    font-size:clamp(30px, 4.2vw, 48px);
-    line-height:1.22;
-    max-width:820px;
+    font-size:clamp(30px, 4.8vw, 48px);
+    line-height:1.18;
+    margin:0 auto;
+    max-width:18ch;
   }
 
-  .hero p{
-    margin-top:22px;
+  .hero p.sub{
+    margin:26px auto 0;
     color:var(--gray-on-dark);
     font-weight:500;
     font-size:18px;
-    line-height:1.6;
-    max-width:640px;
-  }
-
-  /* ---------- SPLIT GRID ---------- */
-  .split-grid{
-    display:grid;
-    grid-template-columns:60% 40%;
-    gap:48px;
-    padding-bottom:80px;
-    align-items:start;
-  }
-
-  @media (max-width:860px){
-    .split-grid{
-      grid-template-columns:1fr;
-    }
-  }
-
-  /* ---------- LEFT COLUMN ---------- */
-  .left-col{
-    padding-right:8px;
+    line-height:1.65;
+    max-width:58ch;
   }
 
   .alert-bar{
+    max-width:640px;
+    margin:36px auto 0;
     background:var(--panel);
     border:1px solid var(--panel-line);
     border-left:4px solid var(--crimson);
     color:#FFFFFF;
     font-weight:700;
-    padding:16px 20px;
+    padding:14px 20px;
     border-radius:8px;
-    font-size:15px;
-    margin-bottom:36px;
+    font-size:14.5px;
+    text-align:left;
   }
 
-  .letter{
-    background:#ffffff;
-    border-radius:16px;
-    box-shadow:0 20px 60px rgba(11,11,15,0.06);
-    padding:44px 40px;
+  .cta-button{
+    display:inline-block;
+    background:var(--crimson);
+    color:#ffffff !important;
+    border:none;
+    padding:20px 36px;
+    font-size:15.5px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    border-radius:8px;
+    cursor:pointer;
+    font-family:inherit;
+    text-decoration:none;
+    box-shadow:0 0 0 1px rgba(225,29,72,0.4), 0 10px 32px var(--crimson-glow);
+    transition:transform 0.15s ease, background 0.2s ease;
   }
+
+  .cta-button:hover{ background:var(--crimson-dark); transform:translateY(-2px); }
+
+  .mid-cta{ text-align:center; padding:12px 0 8px; }
+
+  .mid-cta .fine{
+    display:block;
+    margin-top:14px;
+    color:var(--gray-on-dark);
+    font-size:13px;
+  }
+
+  .letter-section{ background:var(--paper); padding:64px 0; }
+  .letter-section.alt{ background:var(--paper-alt); }
 
   .letter p{
-    font-size:17px;
+    font-size:17.5px;
     line-height:1.75;
     color:var(--ink);
-    margin-bottom:20px;
-    max-width:640px;
+    margin-bottom:22px;
+    max-width:68ch;
   }
 
   .letter p.lede{
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:23px;
     font-weight:700;
+    color:var(--black);
+    line-height:1.4;
   }
 
-  .reasons-heading{
+  .letter p.emphasis{
+    border-left:3px solid var(--crimson);
+    padding-left:22px;
+    font-style:italic;
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:19px;
+    color:var(--black);
+  }
+
+  h2.section-headline{
     font-family:Georgia, "Times New Roman", serif;
     font-weight:700;
-    color:#FFFFFF;
-    font-size:26px;
-    margin:44px 0 24px;
+    color:var(--black);
+    font-size:clamp(24px, 3vw, 32px);
+    margin:0 0 28px;
+    line-height:1.3;
+  }
+
+  .stat-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border:1px solid var(--line-light);
+    border-radius:12px;
+    overflow:hidden;
+    margin:36px 0 12px;
+  }
+
+  .stat-col{ padding:32px 26px; text-align:center; }
+
+  .stat-col.bad{
+    background:rgba(225,29,72,0.05);
+    border-right:1px solid var(--line-light);
+  }
+
+  .stat-col .num{
+    font-family:Georgia, "Times New Roman", serif;
+    font-weight:700;
+    font-size:40px;
+    color:var(--crimson);
+    display:block;
+  }
+
+  .stat-col.good .num{ color:#0B0B0F; }
+
+  .stat-col .label{
+    margin-top:8px;
+    font-size:14px;
+    color:var(--gray-on-light);
+    font-weight:600;
   }
 
   .reason{
     display:flex;
     gap:16px;
-    margin-bottom:20px;
-    max-width:660px;
+    margin-bottom:18px;
     background:var(--panel);
     border:1px solid var(--panel-line);
     border-radius:12px;
     padding:22px 24px;
   }
 
-  .reason .marker{
-    flex-shrink:0;
-    font-size:18px;
-    line-height:1.75;
-  }
+  .reason .marker{ flex-shrink:0; font-size:18px; line-height:1.75; }
 
   .reason p{
-    font-size:16px;
+    font-size:15.5px;
     line-height:1.7;
     color:rgba(255,255,255,0.85);
     margin:0;
+    max-width:none;
   }
 
-  .reason strong{
-    color:#FFFFFF;
+  .reason strong{ color:#FFFFFF; }
+
+  .dark-block{ background:var(--black); padding:56px 0; }
+
+  .phase-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:8px; }
+
+  @media (max-width:700px){ .phase-grid{ grid-template-columns:1fr; } }
+
+  .phase-card{
+    background:#ffffff;
+    border:1px solid var(--line-light);
+    border-radius:12px;
+    padding:26px 24px;
+    box-shadow:0 12px 30px rgba(11,11,15,0.05);
   }
 
-  /* ---------- RIGHT COLUMN / VAULT ---------- */
-  .vault{
+  .phase-card .phase-num{
+    color:var(--crimson);
+    font-weight:700;
+    font-size:12.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    margin-bottom:8px;
+    display:block;
+  }
+
+  .phase-card h3{
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:18.5px;
+    color:var(--black);
+    margin-bottom:10px;
+    line-height:1.35;
+  }
+
+  .phase-card p{
+    font-size:14.5px;
+    line-height:1.6;
+    color:var(--gray-on-light);
+    max-width:none;
+    margin:0 0 10px;
+  }
+
+  .phase-card p.translation{
+    font-style:italic;
+    color:var(--crimson);
+    font-size:13.5px;
+    margin-bottom:0;
+  }
+
+  .guarantee-box{
     background:var(--panel);
+    border:1px solid var(--panel-line);
+    border-radius:16px;
+    padding:40px 36px;
+    margin:20px 0;
+  }
+
+  .guarantee-box .tag{
+    color:var(--crimson);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+    display:block;
+  }
+
+  .guarantee-box h3{
+    font-family:Georgia, "Times New Roman", serif;
+    color:#FFFFFF;
+    font-size:24px;
+    margin-bottom:16px;
+    line-height:1.35;
+  }
+
+  .guarantee-box p{
+    color:rgba(255,255,255,0.82);
+    font-size:16px;
+    line-height:1.7;
+    max-width:none;
+    margin-bottom:0;
+  }
+
+  .proof-strip{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin:28px 0 8px;
+  }
+
+  .proof-pill{
+    background:var(--paper-alt);
+    border:1px solid var(--line-light);
+    border-radius:999px;
+    padding:10px 18px;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink);
+  }
+
+  .proof-pill a{ color:var(--crimson); text-decoration:none; }
+  .proof-pill a:hover{ text-decoration:underline; }
+
+  .vault-section{ background:var(--panel); padding:64px 0 72px; }
+
+  .vault{
+    max-width:640px;
+    margin:0 auto;
+    background:var(--black);
     border:1px solid var(--panel-line);
     padding:40px;
     border-radius:16px;
-    position:sticky;
-    top:32px;
   }
 
   .vault-inner{
     border:1.5px dashed rgba(255,255,255,0.25);
     border-radius:10px;
-    padding:32px 24px;
+    padding:36px 28px;
+    text-align:center;
   }
 
   .vault-title{
     color:#FFFFFF;
     font-family:Georgia, "Times New Roman", serif;
-    font-size:20px;
+    font-size:22px;
     font-weight:700;
-    margin-bottom:6px;
+    margin-bottom:8px;
   }
 
   .vault-subtitle{
     color:var(--gray-on-dark);
-    font-size:13.5px;
-    margin-bottom:28px;
+    font-size:14px;
+    margin-bottom:26px;
     line-height:1.5;
   }
 
@@ -205,8 +362,9 @@
     list-style:none;
     display:flex;
     flex-direction:column;
-    gap:16px;
-    margin-bottom:34px;
+    gap:14px;
+    margin-bottom:30px;
+    text-align:left;
   }
 
   .checklist li{
@@ -218,56 +376,42 @@
     line-height:1.6;
   }
 
-  .checklist li .check{
-    color:var(--crimson);
-    font-weight:700;
-    flex-shrink:0;
-  }
-
-  .book-btn{
-    display:block;
-    width:100%;
-    text-align:center;
-    background:var(--crimson);
-    color:#ffffff;
-    border:none;
-    padding:20px 20px;
-    font-size:15.5px;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:0.06em;
-    border-radius:8px;
-    cursor:pointer;
-    font-family:inherit;
-    box-shadow:0 0 0 1px rgba(225,29,72,0.4), 0 10px 32px var(--crimson-glow);
-    transition:transform 0.15s ease, background 0.2s ease;
-  }
-
-  .book-btn:hover{
-    background:var(--crimson-dark);
-    transform:translateY(-2px);
-  }
-
-  .book-btn:focus-visible{
-    outline:3px solid #FFFFFF;
-    outline-offset:2px;
-  }
+  .checklist li .check{ color:var(--crimson); font-weight:700; flex-shrink:0; }
 
   .vault-fineprint{
-    margin-top:18px;
+    margin-top:16px;
     color:var(--gray-on-dark);
     font-size:12.5px;
     line-height:1.6;
-    text-align:center;
   }
 
-  /* ---------- FOOTER ---------- */
+  .signature{ padding:44px 0 8px; }
+  .signature p{ font-size:16px; color:var(--ink); margin-bottom:4px; }
+  .signature .sign-name{
+    font-family:Georgia, "Times New Roman", serif;
+    font-weight:700;
+    font-size:19px;
+    color:var(--black);
+    margin-top:16px;
+  }
+  .signature .sign-title{ font-size:14px; color:var(--gray-on-light); }
+
+  .ps-block{
+    max-width:68ch;
+    margin-top:28px;
+    padding-top:24px;
+    border-top:1px solid var(--line-light);
+  }
+  .ps-block p{ font-size:16px; line-height:1.7; color:var(--ink); }
+  .ps-block strong{ color:var(--black); }
+
   .funnel-footer{
     border-top:1px solid var(--panel-line);
     padding:32px 0 48px;
     text-align:center;
     font-size:13px;
     color:var(--gray-on-dark);
+    background:var(--black);
   }
 
   .contact-row{
@@ -279,30 +423,19 @@
     margin-bottom:14px;
   }
 
-  .contact-row a{
-    color:var(--gray-on-dark);
-    text-decoration:none;
-    font-weight:600;
-    font-size:13px;
+  .contact-row a{ color:var(--gray-on-dark); text-decoration:none; font-weight:600; font-size:13px; }
+  .contact-row a:hover{ color:#FFFFFF; }
+  .contact-row .dot{ color:rgba(255,255,255,0.2); }
+
+  .funnel-footer a.back-link{ color:var(--crimson); text-decoration:none; font-weight:600; }
+  .funnel-footer a.back-link:hover{ text-decoration:underline; }
+
+  @media (max-width:600px){
+    .stat-row{ grid-template-columns:1fr; }
+    .stat-col.bad{ border-right:none; border-bottom:1px solid var(--line-light); }
   }
 
-  .contact-row a:hover{
-    color:#FFFFFF;
-  }
-
-  .contact-row .dot{
-    color:rgba(255,255,255,0.2);
-  }
-
-  .funnel-footer a.back-link{
-    color:var(--crimson);
-    text-decoration:none;
-    font-weight:600;
-  }
-
-  .funnel-footer a.back-link:hover{
-    text-decoration:underline;
-  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
 </style>
 </head>
 <body>
@@ -313,51 +446,153 @@
 
 <main>
 
+  <!-- ================= ATTENTION ================= -->
   <section class="hero">
-    <h1>Lock In Your 15-Minute Live System Extraction Call Before Your Sender Score Drops Another Point</h1>
-    <p>This is not a "casual chat" or a hidden sales pitch. This is a secure, 1-on-1 diagnostic where we open your email backend live and pinpoint the exact algorithmic chokeholds starving your revenue.</p>
-  </section>
-
-  <section class="split-grid">
-
-    <div class="left-col">
+    <div class="wrap">
+      <p class="eyebrow">For 7-To-8-Figure E-Commerce Brands, Coaches &amp; Info-Product Creators</p>
+      <h1>Stop Renting Your Customers From Mark Zuckerberg</h1>
+      <p class="sub">Your email list is quietly losing you money every single day. This is the live 15-minute call where I open your actual numbers and show you exactly how much — and exactly where it's leaking.</p>
 
       <div class="alert-bar">
-        STATUS: Diagnostic slots are limited every week — booked directly on my calendar below.
+        ⚠ Only 3 Diagnostic Slots Open This Week — Booked Directly On My Calendar Below
       </div>
 
-      <div class="letter">
-        <p class="lede">Listen to me very carefully.</p>
-
-        <p>Right now, as you read these words, your email list is actively leaking cash. Every hour your technical domain settings remain misaligned, and every time you blast an unoptimized campaign into the "Promotions" tab, your sender score drops one more point closer to unrecoverable.</p>
-
-        <p>You can try to read blogs, watch YouTube videos, or hire another low-cost content writer to fix this. But while you waste time guessing, the tech monopolies — Google, Yahoo, Microsoft — are quietly tightening the noose around your brand.</p>
-
-        <p>Because my calendar is tightly managed between active 14-day performance sprints, I only open a handful of diagnostic slots per week.</p>
-
-        <p>If you're a serious founder generating at least 7 figures, this call is the turning point. We'll share a screen, look at your raw numbers, and map out the exact sequence to stop the silent inbox execution.</p>
+      <div class="mid-cta" style="margin-top:36px;">
+        <a href="https://zcal.co/i/sSUH0S8q" target="_blank" rel="noopener" class="cta-button">Book My Free Bucket Audit</a>
+        <span class="fine">15 minutes. No pitch if it's not a fit.</span>
       </div>
-
-      <h2 class="reasons-heading">The Three Reasons For This Call (The Pre-Frame)</h2>
-
-      <div class="reason">
-        <span class="marker">👉</span>
-        <p><strong>Reason 1: We Inspect the Guts Live.</strong> Every email system is broken in its own unique way. Some stores have a broken checkout flow; others have a domain that's already half-blacklisted by Yahoo. I can't tell which one is yours by guessing over email. We have to open the hood together.</p>
-      </div>
-
-      <div class="reason">
-        <span class="marker">👉</span>
-        <p><strong>Reason 2: Ruthless Client Filtering.</strong> I don't take on every client who has a thousand dollars. If your list size is too small, if your traffic is fake, or if you refuse to act fast, I can't help you. This call is a two-way filter to make sure we're a fit for a 14-day sprint.</p>
-      </div>
-
-      <div class="reason">
-        <span class="marker">👉</span>
-        <p><strong>Reason 3: Zero Hidden Sales Pitches.</strong> I don't need to beg for your business. By the end of the 15 minutes, you'll see your leaks laid bare on the screen. If you want me to deploy the protocol to fix them, ask. If you want to take the notes and fix it yourself, you leave with my blessing.</p>
-      </div>
-
     </div>
+  </section>
 
-    <div class="right-col">
+  <!-- ================= INTEREST ================= -->
+  <section class="letter-section">
+    <div class="wrap letter">
+      <p class="lede">Dear Friend, I want to ask you a question — and I want you to answer it honestly, even if it stings a little.</p>
+
+      <p><strong>What percentage of your total revenue comes from email?</strong> Go ahead. Pull up the dashboard. I'll wait.</p>
+
+      <div class="stat-row">
+        <div class="stat-col bad">
+          <span class="num">5–10%</span>
+          <span class="label">Where most 7-figure brands are stuck — and think is normal</span>
+        </div>
+        <div class="stat-col good">
+          <span class="num">30–40%</span>
+          <span class="label">Where your smartest competitors already are, off the exact same list size</span>
+        </div>
+      </div>
+
+      <p>It's not from more ad spend. Not from a bigger team. It's from the list they already have — the one that's sitting right there in your account too, getting colder every day you don't touch it.</p>
+
+      <p class="emphasis">If your competitor makes 4x more revenue from the same list size as you... what does that tell you about your list? Or does it tell you something about the person running it?</p>
+
+      <p>That's not a shot at you. It's a shot at the last three people you hired to fix this.</p>
+    </div>
+  </section>
+
+  <section class="dark-block">
+    <div class="wrap">
+      <h2 class="section-headline" style="color:#FFFFFF;">Here's What's Actually Been Happening</h2>
+
+      <div class="reason">
+        <span class="marker">👉</span>
+        <p><strong>You've been burned by the Flaky Freelancer Cycle.</strong> A copywriter who wrote pretty words that didn't sell — open rates looked fine, revenue never moved. A "tech guy" who broke a DNS record fixing your automations, and now half your emails land nowhere at all. You ended up debugging your own DKIM records at 11pm on a Tuesday — which is insane. You didn't start this business to become an amateur email plumber.</p>
+      </div>
+
+      <div class="reason">
+        <span class="marker">👉</span>
+        <p><strong>You don't own your traffic. You're renting it.</strong> Every dollar you spend on Meta or TikTok builds somebody else's asset, on somebody else's rules — rules that can change with zero warning. One flagged ad account, one policy nobody can explain, and your entire revenue engine goes dark overnight. If that happened today, how much of your business survives? If the honest answer is "not much" — you don't have a marketing problem. <strong>You have an insurance problem.</strong> Email is the only channel you actually own. Nobody can shut it off but you.</p>
+      </div>
+
+      <div class="reason">
+        <span class="marker">👉</span>
+        <p><strong>Your list is being blasted, not segmented — and it's exposed.</strong> Every subscriber gets the same email whether they're a top-5% VIP or dead weight you should've cut months ago. And one bad sending practice is all it takes for Google or Yahoo to quietly blacklist your main domain — taking your customer support inbox and your organic SEO down with it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DESIRE ================= -->
+  <section class="letter-section alt">
+    <div class="wrap">
+      <h2 class="section-headline">Here's Exactly What We Open Up On The Call</h2>
+      <p style="max-width:68ch; margin-bottom:32px; color:var(--ink); font-size:17px; line-height:1.7;">This isn't a generic "audit." I'm looking at the same five things I check on every account I take on — live, on your screen, with your real numbers.</p>
+
+      <div class="phase-grid">
+        <div class="phase-card">
+          <span class="phase-num">Phase 1</span>
+          <h3>Get You Out Of Spam Jail — Permanently</h3>
+          <p>SPF, DKIM, DMARC hardcoded by hand. Custom Sending Domain and BIMI with a VMC certificate so your logo shows up in the inbox. A real warm-up protocol if your domain or ESP is new.</p>
+          <p class="translation">Translation: the emails you're paying for actually arrive.</p>
+        </div>
+        <div class="phase-card">
+          <span class="phase-num">Phase 2</span>
+          <h3>Find Your VIPs — And Your Dead Weight</h3>
+          <p>Your top 5–10% LTV customers isolated and treated like royalty. Dead subscribers identified and cut, dropping your Klaviyo or HubSpot bill immediately. Churn risk flagged before they drift.</p>
+          <p class="translation">Translation: every email goes to the right person, not everyone at once.</p>
+        </div>
+        <div class="phase-card">
+          <span class="phase-num">Phase 3</span>
+          <h3>Machines That Sell While You Sleep</h3>
+          <p>Cart flows that split by dollar value. Browse-abandonment emails that morph by category in real time. Order-confirmation emails — your highest open rate in existence — turned into quiet upsell engines.</p>
+          <p class="translation">Translation: sales happen automatically, triggered by real behavior.</p>
+        </div>
+        <div class="phase-card">
+          <span class="phase-num">Phases 4–5</span>
+          <h3>Copy, Design, And Proof</h3>
+          <p>Dark-mode-safe design, no broken image boxes. Plain text vs. HTML tested head-to-head. Clean UTM tracking through GA4 so you see exactly which dollar came from which email.</p>
+          <p class="translation">Translation: no guessing, no vibes — you'll see the number.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="letter-section">
+    <div class="wrap">
+      <div class="guarantee-box">
+        <span class="tag">The 14-Day Performance Pivot</span>
+        <h3>If It Doesn't Make You Money, You Get Your Money Back — And You Keep Everything I Built</h3>
+        <p>If your 3 core flows don't generate at least $3,000 in trackable revenue within 30 days of launch, you get your $1,000 back. That's not a testimonial. That's a contractual outcome, in writing, before you ever pay a second dollar.</p>
+      </div>
+
+      <div class="proof-strip">
+        <div class="proof-pill">27 documented wins — <a href="wins.html">see the real screenshots →</a></div>
+        <div class="proof-pill">Unedited client chats — <a href="testimonials.html">read them →</a></div>
+        <div class="proof-pill">Real send scripts — <a href="samples.html">see the copy →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHAT HAPPENS IF YOU DO NOTHING ================= -->
+  <section class="dark-block">
+    <div class="wrap">
+      <h2 class="section-headline" style="color:#FFFFFF;">Here's What Happens If You Do Nothing</h2>
+      <p style="color:rgba(255,255,255,0.7); max-width:68ch; margin-bottom:24px; font-size:16.5px; line-height:1.7;">You already know the answer. Let's say it out loud anyway.</p>
+
+      <div class="reason">
+        <span class="marker">👉</span>
+        <p>You keep burning six figures acquiring customers who buy once and vanish — while paying a bloated software bill to host thousands of subscribers who will never open another email from you.</p>
+      </div>
+
+      <div class="reason">
+        <span class="marker">👉</span>
+        <p>Your sharpest competitors keep compounding their retention advantage while you stay stuck rebuying the same customer over and over through paid ads.</p>
+      </div>
+
+      <div class="reason">
+        <span class="marker">👉</span>
+        <p>You remain one policy update, one flagged account, away from losing the whole machine overnight. <strong>That's not a risk. That's a when, not an if.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <div class="mid-cta letter-section alt" style="padding-top:56px; padding-bottom:56px;">
+    <a href="https://zcal.co/i/sSUH0S8q" target="_blank" rel="noopener" class="cta-button">Book My Free Bucket Audit</a>
+    <span class="fine">15 minutes. View-only access. No hard sell.</span>
+  </div>
+
+  <!-- ================= ACTION ================= -->
+  <section class="vault-section">
+    <div class="wrap">
       <div class="vault">
         <div class="vault-inner">
           <div class="vault-title">Reserve Your Slot</div>
@@ -369,13 +604,26 @@
             <li><span class="check">✓</span> You're the actual decision-maker, not gathering quotes for someone else</li>
           </ul>
 
-          <a class="book-btn" href="https://zcal.co/i/sSUH0S8q" target="_blank" rel="noopener">Book My Diagnostic Slot Now</a>
+          <a class="cta-button" style="display:block; width:100%; text-align:center;" href="https://zcal.co/i/sSUH0S8q" target="_blank" rel="noopener">Book My Diagnostic Slot Now</a>
 
           <p class="vault-fineprint">You'll land on my live calendar. Pick any open slot — no back-and-forth required.</p>
         </div>
       </div>
     </div>
+  </section>
 
+  <section class="letter-section">
+    <div class="wrap">
+      <div class="signature">
+        <p>Talk soon,</p>
+        <p class="sign-name">Amir Hayat</p>
+        <p class="sign-title">Full-Stack Retention Specialist</p>
+      </div>
+
+      <div class="ps-block">
+        <p><strong>P.S.</strong> — Remember the math from the top of this page. If your competitor is pulling 40% of revenue from email and you're stuck at 8%, that gap isn't philosophical. It's a specific dollar amount sitting on your table right now. I only open a handful of these calls a week because I build every flow myself — no team of junior VAs running your account while I collect a check. If the calendar's full when you click through, it's full.</p>
+      </div>
+    </div>
   </section>
 
 </main>
