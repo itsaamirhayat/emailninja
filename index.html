@@ -225,13 +225,16 @@
     border:1px solid var(--panel-line);
     border-radius:10px;
     overflow:hidden;
-    aspect-ratio:9/16;
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
 
   .client-shot img{
     width:100%;
-    height:100%;
-    object-fit:cover;
+    height:auto;
+    display:block;
+    object-fit:contain;
   }
 
   @media (max-width:640px){
@@ -425,8 +428,8 @@
 
   .win-card img{
     width:100%;
-    aspect-ratio:4/3;
-    object-fit:cover;
+    height:auto;
+    display:block;
   }
 
   .win-card .win-caption{
@@ -837,7 +840,7 @@
 
 <footer class="site-footer">
   <div class="contact-row">
-    <a href="mailto:itsaamirhayat@gmail.com">Email</a>
+    <a href="mailto:itsaamirhayat@gmail.com" class="email-link">itsaamirhayat@gmail.com</a>
     <span class="dot">•</span>
     <a href="https://www.linkedin.com/in/amir-hayat-0016b2266/" target="_blank" rel="noopener">LinkedIn</a>
     <span class="dot">•</span>
@@ -849,6 +852,82 @@
   </div>
   <p>&copy; 2026 Amir Hayat — Email Deliverability Architect</p>
 </footer>
+
+
+<!-- ===== GLOBAL IMAGE LIGHTBOX ===== -->
+<style>
+  .lightbox-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(5,5,8,0.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    padding:32px;
+    cursor:zoom-out;
+  }
+  .lightbox-overlay.active{ display:flex; }
+  .lightbox-overlay img{
+    max-width:95vw;
+    max-height:95vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    border-radius:8px;
+    box-shadow:0 30px 80px rgba(0,0,0,0.6);
+  }
+  .lightbox-close{
+    position:fixed;
+    top:24px;
+    right:28px;
+    color:#FFFFFF;
+    font-size:32px;
+    line-height:1;
+    font-family:-apple-system, sans-serif;
+    cursor:pointer;
+    z-index:10000;
+    opacity:0.8;
+  }
+  .lightbox-close:hover{ opacity:1; }
+</style>
+<div class="lightbox-overlay" id="lightboxOverlay">
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <img id="lightboxImg" src="" alt="">
+</div>
+<script>
+(function(){
+  var overlay = document.getElementById('lightboxOverlay');
+  var overlayImg = document.getElementById('lightboxImg');
+  var closeBtn = document.getElementById('lightboxClose');
+
+  function openLightbox(src, alt){
+    overlayImg.src = src;
+    overlayImg.alt = alt || '';
+    overlay.classList.add('active');
+  }
+  function closeLightbox(){
+    overlay.classList.remove('active');
+    overlayImg.src = '';
+  }
+
+  document.querySelectorAll('main img').forEach(function(img){
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function(){
+      openLightbox(img.src, img.alt);
+    });
+  });
+
+  overlay.addEventListener('click', closeLightbox);
+  closeBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    closeLightbox();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
+  });
+})();
+</script>
 
 </body>
 </html>
