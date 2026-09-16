@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Samples — Amir Hayat, Email Deliverability Architect</title>
+<title>The Vault — Amir Hayat, Email Deliverability Architect</title>
 <style>
 
   :root{
@@ -32,10 +32,11 @@
   }
 
   body{
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: var(--ink);
     line-height: 1.6;
     font-size: 17px;
+    -webkit-font-smoothing: antialiased;
   }
 
   main, section{
@@ -53,10 +54,12 @@
   img, svg{ max-width: 100%; display: block; }
 
   .wrap{
-    max-width: 1120px;
+    max-width: 1160px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0 40px;
   }
+
+  h1, h2, h3, blockquote{ font-family: Georgia, "Times New Roman", serif; }
 
   /* ============ NAVIGATION ============ */
 
@@ -73,7 +76,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px 32px;
-    max-width: 1120px;
+    max-width: 1160px;
     margin: 0 auto;
     flex-wrap: wrap;
     gap: 16px;
@@ -103,9 +106,7 @@
     transition: border-color 0.2s ease, color 0.2s ease;
   }
 
-  nav.primary-links a:hover{
-    color: #FFFFFF;
-  }
+  nav.primary-links a:hover{ color: #FFFFFF; }
 
   nav.primary-links a.active{
     color: #FFFFFF;
@@ -121,9 +122,7 @@
     padding: 92px 0 68px;
   }
 
-  .hero .wrap{
-    max-width: 880px;
-  }
+  .hero .wrap{ max-width: 920px; }
 
   .hero-eyebrow{
     font-size: 14px;
@@ -133,13 +132,12 @@
   }
 
   h1.hero-headline{
-    font-family: Georgia, "Times New Roman", serif;
     font-weight: 700;
     color: #FFFFFF;
     font-size: clamp(32px, 5vw, 50px);
     line-height: 1.15;
     letter-spacing: -0.01em;
-    max-width: 18ch;
+    max-width: 20ch;
   }
 
   p.hero-sub{
@@ -148,7 +146,7 @@
     font-weight: 500;
     color: var(--gray-on-dark);
     max-width: 62ch;
-    line-height: 1.55;
+    line-height: 1.6;
   }
 
   /* ============ INTRO COPY (LIGHT) ============ */
@@ -159,9 +157,7 @@
     border-bottom: 1px solid var(--line-light);
   }
 
-  .intro .wrap{
-    max-width: 720px;
-  }
+  .intro .wrap{ max-width: 720px; }
 
   .intro p{
     font-size: 17.5px;
@@ -171,7 +167,6 @@
   }
 
   .intro p:first-of-type{
-    font-family: Georgia, "Times New Roman", serif;
     font-size: 23px;
     color: var(--black);
     font-weight: 700;
@@ -182,24 +177,74 @@
     padding-left: 22px;
     font-style: italic;
     color: var(--black);
-    font-family: Georgia, "Times New Roman", serif;
     font-size: 19px;
   }
 
-  /* ============ METHODOLOGY SAMPLES GRID (LIGHT) ============ */
+  /* ============ DIAGNOSTIC STANDARDS MATRIX (LIGHT ALT) ============ */
 
-  .samples{
-    background: var(--paper);
-    padding: 12px 0 40px;
+  .matrix{
+    background: var(--paper-alt);
+    padding: 80px 0;
+    border-bottom: 1px solid var(--line-light);
   }
 
-  .samples-heading{
-    max-width: 720px;
-    margin-bottom: 48px;
+  .matrix-head{ max-width: 680px; margin-bottom: 48px; }
+
+  .matrix-head .eyebrow{
+    display: block;
+    color: var(--crimson);
+    font-weight: 600;
+    font-size: 14.5px;
+    margin-bottom: 14px;
   }
+
+  .matrix-head h2{
+    color: var(--black);
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .card-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .metric-card{
+    background: #ffffff;
+    border: 1px solid var(--line-light);
+    border-radius: 14px;
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: 0 10px 26px rgba(11,11,15,0.04);
+  }
+
+  .metric-card .niche{
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 14.5px;
+    letter-spacing: 0.01em;
+  }
+
+  .metric-card .impact{
+    font-weight: 700;
+    color: var(--crimson);
+    font-size: 21px;
+    line-height: 1.5;
+  }
+
+  .metric-card .impact .target{ color: var(--black); }
+
+  /* ============ THREE SAMPLE BREAKDOWNS (LIGHT) ============ */
+
+  .samples{ background: var(--paper); padding: 76px 0 40px; }
+
+  .samples-heading{ max-width: 720px; margin-bottom: 48px; }
 
   .samples-heading h2{
-    font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(26px, 3.2vw, 34px);
     color: var(--black);
     font-weight: 700;
@@ -220,15 +265,9 @@
     border-top: 1px solid var(--line-light);
   }
 
-  .card:last-of-type{
-    border-bottom: 1px solid var(--line-light);
-  }
+  .card:last-of-type{ border-bottom: 1px solid var(--line-light); }
 
-  .card-meta{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  .card-meta{ display: flex; flex-direction: column; gap: 12px; }
 
   .niche-tag{
     display: inline-block;
@@ -242,20 +281,15 @@
     line-height: 1.3;
   }
 
-  .card-index{
-    font-family: Georgia, serif;
-    font-size: 14px;
-    color: var(--gray-on-light);
-  }
+  .card-index{ font-size: 14px; color: var(--gray-on-light); }
 
   .card-body h3{
-    font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(21px, 2.4vw, 26px);
     color: var(--black);
     font-weight: 700;
     line-height: 1.3;
     margin-bottom: 16px;
-    max-width: 22ch;
+    max-width: 24ch;
   }
 
   .card-body p{
@@ -273,10 +307,7 @@
     margin-top: 6px;
   }
 
-  .blueprint strong{
-    color: var(--black);
-    font-weight: 700;
-  }
+  .blueprint strong{ color: var(--black); font-weight: 700; }
 
   .code-block{
     background: var(--code-bg);
@@ -305,22 +336,77 @@
     word-break: break-word;
   }
 
-  /* ============ THE VAULT (LIGHT ALT) ============ */
+  /* ============ 27 WINS GRID (LIGHT ALT) ============ */
 
-  .vault-section{
+  .wins-showcase{
     background: var(--paper-alt);
-    padding: 76px 0;
-    border-top: 1px solid var(--line-light);
+    padding: 80px 0;
     border-bottom: 1px solid var(--line-light);
   }
 
-  .vault-heading{
-    max-width: 760px;
-    margin-bottom: 44px;
+  .wins-showcase-head{ max-width: 720px; margin-bottom: 48px; }
+
+  .wins-showcase-head .eyebrow{
+    display: block;
+    color: var(--crimson);
+    font-weight: 600;
+    font-size: 14.5px;
+    margin-bottom: 14px;
   }
 
+  .wins-showcase-head h2{
+    color: var(--black);
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+
+  .wins-showcase-head p{
+    color: var(--gray-on-light);
+    font-size: 16.5px;
+    max-width: 66ch;
+    line-height: 1.65;
+  }
+
+  .wins-full-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  @media (max-width: 980px){ .wins-full-grid{ grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 640px){ .wins-full-grid{ grid-template-columns: repeat(2, 1fr); } }
+
+  .win-tile{
+    background: #ffffff;
+    border: 1px solid var(--line-light);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(11,11,15,0.05);
+  }
+
+  .win-tile img{ width: 100%; height: auto; display: block; }
+
+  .win-tile .win-tile-num{
+    padding: 8px 10px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--gray-on-light);
+    border-top: 1px solid var(--line-light);
+  }
+
+  /* ============ THE VAULT: 15 EMAILS (LIGHT) ============ */
+
+  .vault-section{
+    background: var(--paper);
+    padding: 76px 0;
+    border-bottom: 1px solid var(--line-light);
+  }
+
+  .vault-heading{ max-width: 760px; margin-bottom: 44px; }
+
   .vault-heading h2{
-    font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(26px, 3.2vw, 32px);
     color: var(--black);
     font-weight: 700;
@@ -341,13 +427,8 @@
     align-items: start;
   }
 
-  @media (max-width: 980px){
-    .vault-grid{ grid-template-columns: repeat(2, 1fr); }
-  }
-
-  @media (max-width: 620px){
-    .vault-grid{ grid-template-columns: 1fr; }
-  }
+  @media (max-width: 980px){ .vault-grid{ grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px){ .vault-grid{ grid-template-columns: 1fr; } }
 
   .vault-card{
     background: #ffffff;
@@ -364,9 +445,7 @@
     border-bottom: 1px solid var(--line-light);
   }
 
-  .vault-card-footer{
-    padding: 14px 14px 16px;
-  }
+  .vault-card-footer{ padding: 14px 14px 16px; }
 
   .vault-card-footer .vault-label{
     font-size: 13px;
@@ -374,24 +453,72 @@
     color: var(--black);
   }
 
+  /* ============ REPORTING SECTION (DARK) ============ */
+
+  .dashboards{
+    background: var(--black);
+    padding: 80px 0;
+    border-bottom: 1px solid var(--panel-line);
+  }
+
+  .dashboards h2{
+    color: #FFFFFF;
+    font-size: clamp(26px, 3vw, 34px);
+    font-weight: 700;
+    margin-bottom: 20px;
+    max-width: 640px;
+    line-height: 1.25;
+  }
+
+  .dashboards p.lead-in{
+    color: var(--gray-on-dark);
+    font-size: 17px;
+    max-width: 640px;
+    line-height: 1.65;
+    margin-bottom: 44px;
+  }
+
+  .report-stack{ display: flex; flex-direction: column; gap: 14px; }
+
+  .report-item{
+    background: var(--panel);
+    border: 1px solid var(--panel-line);
+    border-radius: 12px;
+    padding: 32px 36px;
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+  }
+
+  .report-item .num{
+    color: var(--crimson);
+    font-size: 22px;
+    font-weight: 700;
+    flex-shrink: 0;
+    min-width: 32px;
+  }
+
+  .report-item p{
+    color: rgba(255,255,255,0.82);
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .report-item strong{ color: #FFFFFF; }
+
   /* ============ CLOSING CTA (DARK) ============ */
 
-  .closing{
-    background: var(--black);
+  .closing{ padding: 96px 0 108px; background: var(--black); }
+
+  .closing .wrap{ max-width: 680px; text-align: left; }
+
+  .closing blockquote{
     color: #FFFFFF;
-    padding: 92px 0;
-  }
-
-  .closing .wrap{
-    max-width: 680px;
-    text-align: left;
-  }
-
-  .closing p{
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(24px, 3vw, 32px);
-    line-height: 1.4;
-    margin-bottom: 40px;
+    font-size: clamp(24px, 3vw, 30px);
+    line-height: 1.5;
+    font-weight: 400;
+    margin-bottom: 44px;
   }
 
   .cta-button{
@@ -447,49 +574,27 @@
 
   .contact-row a:hover{ color: #FFFFFF; }
 
-  .contact-row .dot{
-    color: rgba(255,255,255,0.2);
-    font-size: 13px;
-  }
+  .contact-row .dot{ color: rgba(255,255,255,0.2); font-size: 13px; }
 
-  footer.site-footer p{
-    font-size: 13px;
-    color: rgba(255,255,255,0.4);
-  }
+  footer.site-footer p{ font-size: 13px; color: rgba(255,255,255,0.4); }
 
   /* ============ RESPONSIVE ============ */
 
-  @media (max-width: 760px){
-    .nav-inner{
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 18px 24px;
-    }
-
-    nav.primary-links ul{
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
+  @media (max-width: 860px){
+    .nav-inner{ flex-direction: column; align-items: flex-start; padding: 18px 24px; }
+    nav.primary-links ul{ gap: 16px; flex-wrap: wrap; }
     .wrap{ padding: 0 24px; }
-
     .hero{ padding: 64px 0 48px; }
-
-    .card{
-      grid-template-columns: 1fr;
-      gap: 20px;
-      padding: 36px 0;
-    }
-
-    .card-meta{
-      flex-direction: row;
-      align-items: center;
-    }
+    .intro, .matrix, .dashboards, .wins-showcase, .vault-section, .samples{ padding: 56px 0; }
+    .card-grid{ grid-template-columns: 1fr; }
+    .metric-card{ padding: 30px 24px; }
+    .card{ grid-template-columns: 1fr; gap: 20px; padding: 36px 0; }
+    .card-meta{ flex-direction: row; align-items: center; }
+    .report-item{ padding: 26px 22px; flex-direction: column; gap: 12px; }
+    .closing{ padding: 72px 0 80px; }
   }
 
-  @media (prefers-reduced-motion: reduce){
-    *{ transition: none !important; }
-  }
+  @media (prefers-reduced-motion: reduce){ *{ transition: none !important; animation: none !important; } }
 
 </style>
 </head>
@@ -502,9 +607,8 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="samples.html" class="active" aria-current="page">Samples</a></li>
+        <li><a href="vault.html" class="active" aria-current="page">The Vault</a></li>
         <li><a href="testimonials.html">Proof</a></li>
-        <li><a href="wins.html">Framework</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -516,19 +620,49 @@
 
   <section class="hero">
     <div class="wrap">
-      <p class="hero-eyebrow">Page 3 — Writing Samples</p>
-      <h1 class="hero-headline">Three Full-Stack Scripts, Plus 15 Real Emails I've Actually Sent</h1>
-      <p class="hero-sub">No artsy corporate designs. No vanity metrics. Below is both the raw methodology I build sequences with, and an actual vault of screenshots from live sends — with the full text linked next to every one.</p>
+      <p class="hero-eyebrow">Page 3 — The Method, The Scripts, The Receipts</p>
+      <h1 class="hero-headline">Here's Every Word I've Written And Every Dollar It Made</h1>
+      <p class="hero-sub">No artsy corporate designs. No vanity metrics. Below is the exact standard I check every account against, three full breakdowns of how I actually build a sequence, 27 documented wins pulled straight from live dashboards, and a vault of 15 real emails I've sent — screenshotted straight from the source, full text linked next to every one.</p>
     </div>
   </section>
 
   <section class="intro">
     <div class="wrap">
-      <p>Look, let's be completely honest with each other.</p>
-      <p>Most marketing agencies hide behind pretty, colorful email templates and sleek graphic designs. They show you a beautiful layout because they're hoping you won't ask the only question that actually matters: "How much money did this email make?"</p>
-      <p>Pretty emails don't sell. Graphics don't talk to the human subconscious. And complex HTML templates are the number-one reason Google's filters flag you as bulk and sink you straight into the "Promotions" tab.</p>
-      <p class="emphasis">Below, you won't find an art gallery. You'll find the raw, street-smart, psychological architecture I build sequences with.</p>
-      <p>First, three full breakdowns showing exactly how I construct a sequence and why each psychological lever sits where it does. Then, further down, an actual vault of 15 real emails I've written and sent — screenshotted straight from the source, with the full Google Doc text linked next to each one so you can read every word for yourself.</p>
+      <p>Let's cut through the noise and get straight to the receipts.</p>
+      <p>Most agencies hide behind pretty templates and vague talk about "engagement" and "brand awareness," hoping you never ask the one question that actually matters: how much money did this make? Pretty emails don't sell. Graphics don't talk to the human subconscious. And complex HTML is the number-one reason Google's filters flag you as bulk and sink you into the "Promotions" tab before a human ever sees it.</p>
+      <p class="emphasis">Here's the order we're doing this in: first, the exact standard I hold every account to — the same one you can check in your own dashboard right now. Then, three full breakdowns of how I actually build a sequence. Then, 27 documented wins and 15 real emails, screenshotted straight from the source. No blurring, no reconstructions, no mockups.</p>
+      <p>By the time you hit the bottom of this page, you won't be taking my word for anything. You'll have seen it.</p>
+    </div>
+  </section>
+
+  <section class="matrix">
+    <div class="wrap">
+      <div class="matrix-head">
+        <span class="eyebrow">The diagnostic thresholds</span>
+        <h2>Four Numbers. One Method. Check Them In Your Own Dashboard Right Now.</h2>
+      </div>
+
+      <div class="card-grid">
+        <div class="metric-card">
+          <span class="niche">The Inbox Delivery Standard</span>
+          <p class="impact">Every account gets pushed toward a <span class="target">99/100 sender score</span> on Google Postmaster Tools. Below the 80s, your domain reputation is actively working against you.</p>
+        </div>
+
+        <div class="metric-card">
+          <span class="niche">The Primary Inbox Threshold</span>
+          <p class="impact">Open rates <span class="target">under 15%</span> almost always mean the Promotions or Spam tab, not the offer. Healthy, well-aligned domains routinely sit in the <span class="target">25–40%</span> range.</p>
+        </div>
+
+        <div class="metric-card">
+          <span class="niche">The Cart-Recovery Bar</span>
+          <p class="impact">A well-built abandoned cart flow should recover somewhere between <span class="target">3–8%</span> of abandoned sessions. If yours is under 2%, the flow is either mistimed or the copy isn't doing its job.</p>
+        </div>
+
+        <div class="metric-card">
+          <span class="niche">The Spam Filter Ceiling</span>
+          <p class="impact">Spam complaint rate has to stay under the <span class="target">0.3%</span> hard limit — I build toward keeping every account closer to <span class="target">0.05%</span> as the real safety margin.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -536,8 +670,8 @@
     <div class="wrap">
 
       <div class="samples-heading">
-        <h2>Three niches. Zero fluff.</h2>
-        <p>These three breakdowns are written to teach the mechanics — built for hypothetical scenarios rather than naming a client whose permission I don't have to share their numbers publicly. The real, real-name proof lives in the vault below.</p>
+        <h2>Here's Exactly How I Hit Those Numbers</h2>
+        <p>These three breakdowns aren't client work with names attached — they're written to teach you the exact psychological architecture that gets a domain to the thresholds above. The real, real-name proof is two sections down.</p>
       </div>
 
       <article class="card">
@@ -547,7 +681,7 @@
         </div>
         <div class="card-body">
           <h3>The "Accidental Insanity" Price-Drop Flash Sequence</h3>
-          <p>A raw, 3-part text-only sequence, written for a hypothetical elite info-product creator whose course sales have stalled out. Instead of a slick corporate discount announcement, the copy uses the "Reason Why" hook—explaining that a backend system glitch accidentally sent a raw testing coupon to a handful of people, and instead of quietly fixing it, the creator decides to let the next wave of fast-movers grab the same discount.</p>
+          <p>A raw, 3-part text-only sequence, written for a hypothetical elite info-product creator whose course sales have stalled out. Instead of a slick corporate discount announcement, the copy uses the "Reason Why" hook — explaining that a backend system glitch accidentally sent a raw testing coupon to a handful of people, and instead of quietly fixing it, the creator decides to let the next wave of fast-movers grab the same discount.</p>
           <p class="blueprint"><strong>Why This Works:</strong> The "accidental" frame gives urgency a believable cause instead of a manufactured deadline, which is what makes scarcity land instead of feeling like a sales tactic. Sent as plain text from a personal-feeling domain with clean SPF/DKIM alignment, this style is built to bypass the Promotions tab rather than get flagged as a bulk campaign.</p>
 
           <div class="code-block">
@@ -614,103 +748,135 @@ inbox space, and I refuse to be another generic corporate spammer...</pre>
     </div>
   </section>
 
+  <section class="wins-showcase">
+    <div class="wrap">
+      <div class="wins-showcase-head">
+        <span class="eyebrow">The proof, in full</span>
+        <h2>27 Times This Exact Framework Made Someone Money</h2>
+        <p>Every tile below is the same standard you just read about, applied to a real account — revenue dashboards, Postmaster score jumps, and flow performance reports, pulled directly from live client accounts. No blurring, no rounding up.</p>
+      </div>
+
+      <div class="wins-full-grid">
+        <div class="win-tile"><img src="win-1.png" alt="Documented win screenshot 1"><div class="win-tile-num">Win 01</div></div>
+        <div class="win-tile"><img src="win-2.png" alt="Documented win screenshot 2"><div class="win-tile-num">Win 02</div></div>
+        <div class="win-tile"><img src="win-3.png" alt="Documented win screenshot 3"><div class="win-tile-num">Win 03</div></div>
+        <div class="win-tile"><img src="win-4.png" alt="Documented win screenshot 4"><div class="win-tile-num">Win 04</div></div>
+        <div class="win-tile"><img src="win-5.png" alt="Documented win screenshot 5"><div class="win-tile-num">Win 05</div></div>
+        <div class="win-tile"><img src="win-6.png" alt="Documented win screenshot 6"><div class="win-tile-num">Win 06</div></div>
+        <div class="win-tile"><img src="win-7.png" alt="Documented win screenshot 7"><div class="win-tile-num">Win 07</div></div>
+        <div class="win-tile"><img src="win-8.png" alt="Documented win screenshot 8"><div class="win-tile-num">Win 08</div></div>
+        <div class="win-tile"><img src="win-9.png" alt="Documented win screenshot 9"><div class="win-tile-num">Win 09</div></div>
+        <div class="win-tile"><img src="win-10.png" alt="Documented win screenshot 10"><div class="win-tile-num">Win 10</div></div>
+        <div class="win-tile"><img src="win-11.png" alt="Documented win screenshot 11"><div class="win-tile-num">Win 11</div></div>
+        <div class="win-tile"><img src="win-12.png" alt="Documented win screenshot 12"><div class="win-tile-num">Win 12</div></div>
+        <div class="win-tile"><img src="win-13.png" alt="Documented win screenshot 13"><div class="win-tile-num">Win 13</div></div>
+        <div class="win-tile"><img src="win-14.png" alt="Documented win screenshot 14"><div class="win-tile-num">Win 14</div></div>
+        <div class="win-tile"><img src="win-15.png" alt="Documented win screenshot 15"><div class="win-tile-num">Win 15</div></div>
+        <div class="win-tile"><img src="win-16.png" alt="Documented win screenshot 16"><div class="win-tile-num">Win 16</div></div>
+        <div class="win-tile"><img src="win-17.png" alt="Documented win screenshot 17"><div class="win-tile-num">Win 17</div></div>
+        <div class="win-tile"><img src="win-18.png" alt="Documented win screenshot 18"><div class="win-tile-num">Win 18</div></div>
+        <div class="win-tile"><img src="win-19.png" alt="Documented win screenshot 19"><div class="win-tile-num">Win 19</div></div>
+        <div class="win-tile"><img src="win-20.png" alt="Documented win screenshot 20"><div class="win-tile-num">Win 20</div></div>
+        <div class="win-tile"><img src="win-21.png" alt="Documented win screenshot 21"><div class="win-tile-num">Win 21</div></div>
+        <div class="win-tile"><img src="win-22.png" alt="Documented win screenshot 22"><div class="win-tile-num">Win 22</div></div>
+        <div class="win-tile"><img src="win-23.png" alt="Documented win screenshot 23"><div class="win-tile-num">Win 23</div></div>
+        <div class="win-tile"><img src="win-24.png" alt="Documented win screenshot 24"><div class="win-tile-num">Win 24</div></div>
+        <div class="win-tile"><img src="win-25.png" alt="Documented win screenshot 25"><div class="win-tile-num">Win 25</div></div>
+        <div class="win-tile"><img src="win-26.png" alt="Documented win screenshot 26"><div class="win-tile-num">Win 26</div></div>
+        <div class="win-tile"><img src="win-27.png" alt="Documented win screenshot 27"><div class="win-tile-num">Win 27</div></div>
+      </div>
+    </div>
+  </section>
+
   <section class="vault-section">
     <div class="wrap">
       <div class="vault-heading">
-        <h2>The Vault: 15 Real Emails, Screenshotted Straight From The Source</h2>
-        <p>No mockups, no reconstructions. Every thumbnail below is a real send. Click through to the full Google Doc text of each one if you want to read the whole thing beat by beat.</p>
+        <h2>And Here's What The Actual Emails Looked Like</h2>
+        <p>The wins above are the result. This is the raw material — 15 real sends, screenshotted straight from the source. No mockups, no reconstructions. Click through to the full Google Doc text of each one if you want to read the whole thing beat by beat.</p>
       </div>
 
       <div class="vault-grid">
         <div class="vault-card">
           <img src="email-sample-1.png" alt="Screenshot of real email sample 1">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 01</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 01</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-2.png" alt="Screenshot of real email sample 2">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 02</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 02</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-3.png" alt="Screenshot of real email sample 3">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 03</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 03</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-4.png" alt="Screenshot of real email sample 4">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 04</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 04</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-5.png" alt="Screenshot of real email sample 5">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 05</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 05</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-6.png" alt="Screenshot of real email sample 6">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 06</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 06</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-7.png" alt="Screenshot of real email sample 7">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 07</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 07</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-8.png" alt="Screenshot of real email sample 8">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 08</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 08</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-9.png" alt="Screenshot of real email sample 9">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 09</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 09</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-10.png" alt="Screenshot of real email sample 10">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 10</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 10</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-11.png" alt="Screenshot of real email sample 11">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 11</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 11</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-12.png" alt="Screenshot of real email sample 12">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 12</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 12</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-13.png" alt="Screenshot of real email sample 13">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 13</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 13</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-14.png" alt="Screenshot of real email sample 14">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 14</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 14</div></div>
         </div>
         <div class="vault-card">
           <img src="email-sample-15.png" alt="Screenshot of real email sample 15">
-          <div class="vault-card-footer">
-            <div class="vault-label">Email Sample 15</div>
-          </div>
+          <div class="vault-card-footer"><div class="vault-label">Email Sample 15</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dashboards">
+    <div class="wrap">
+      <h2>Here's Exactly What Lands In Your Inbox If We Work Together</h2>
+      <p class="lead-in">No blurred screenshots, no placeholder dashboards. This is what you actually get during a 14-Day Performance Pivot — the same standard, applied to your account.</p>
+
+      <div class="report-stack">
+        <div class="report-item">
+          <span class="num">01</span>
+          <p><strong>A before/after Postmaster export</strong> — your actual sender score, pulled directly from Google's own tool, on day one and again on day fourteen.</p>
+        </div>
+        <div class="report-item">
+          <span class="num">02</span>
+          <p><strong>A live attribution report inside your own ESP</strong> — every dollar tagged to a specific flow, so you're reading your own dashboard, not my summary of it.</p>
+        </div>
+        <div class="report-item">
+          <span class="num">03</span>
+          <p><strong>A written breakdown of every change made</strong> — what was touched in your DNS records, what copy was replaced, and why, so nothing happens to your domain you can't account for.</p>
         </div>
       </div>
     </div>
@@ -718,8 +884,8 @@ inbox space, and I refuse to be another generic corporate spammer...</pre>
 
   <section class="closing">
     <div class="wrap">
-      <p>If you want to see how this style adapts to your exact list and your exact numbers, let's get on a call and open the books.</p>
-      <a href="contact.html" class="cta-button">Claim My Free Revenue Audit</a>
+      <blockquote>You don't have to trust a stranger's highlight reel. Check the four thresholds above in your own dashboard today — and if you want to see this exact framework applied to your list and your numbers, let's get on a call and open the books.</blockquote>
+      <a class="cta-button" href="contact.html">Claim My Free Revenue Audit</a>
     </div>
   </section>
 
